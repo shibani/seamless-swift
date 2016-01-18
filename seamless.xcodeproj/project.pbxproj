@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ED0D03941C4C947C002F198A /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0D03931C4C947C002F198A /* OneShotLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		ED2D89911C387D040090C10C /* RestoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* RestoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		ED2D89931C3DCD8A0090C10C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89921C3DCD8A0090C10C /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133811C31B319009AD4AD /* AppDelegate.swift */; };
 		ED9133841C31B319009AD4AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; };
 		ED9133871C31B319009AD4AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9133851C31B319009AD4AD /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ED0D03931C4C947C002F198A /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
+		ED2D89901C387D040090C10C /* RestoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoViewController.swift; sourceTree = "<group>"; };
+		ED2D89921C3DCD8A0090C10C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		ED91337E1C31B319009AD4AD /* seamless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seamless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9133811C31B319009AD4AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9133831C31B319009AD4AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,8 +61,11 @@
 			isa = PBXGroup;
 			children = (
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
-				ED9133831C31B319009AD4AD /* ViewController.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
+				ED9133831C31B319009AD4AD /* ViewController.swift */,
+				ED2D89901C387D040090C10C /* RestoViewController.swift */,
+				ED2D89921C3DCD8A0090C10C /* SwiftyJSON.swift */,
+				ED0D03931C4C947C002F198A /* OneShotLocationManager.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */,
 				ED91338D1C31B319009AD4AD /* Info.plist */,
@@ -134,8 +143,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED2D89911C387D040090C10C /* RestoViewController.swift in Sources */,
 				ED9133841C31B319009AD4AD /* ViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
+				ED2D89931C3DCD8A0090C10C /* SwiftyJSON.swift in Sources */,
+				ED0D03941C4C947C002F198A /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +295,7 @@
 				ED9133921C31B319009AD4AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
