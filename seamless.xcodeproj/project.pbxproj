@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ED0D03941C4C947C002F198A /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0D03931C4C947C002F198A /* OneShotLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		ED0D03961C4CAAD2002F198A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED0D03951C4CAAD2002F198A /* CoreLocation.framework */; };
 		ED2D89911C387D040090C10C /* RestoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* RestoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2D89931C3DCD8A0090C10C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89921C3DCD8A0090C10C /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133811C31B319009AD4AD /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		ED0D03931C4C947C002F198A /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
+		ED0D03951C4CAAD2002F198A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED2D89901C387D040090C10C /* RestoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestoViewController.swift; sourceTree = "<group>"; };
 		ED2D89921C3DCD8A0090C10C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		ED91337E1C31B319009AD4AD /* seamless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seamless.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED0D03961C4CAAD2002F198A /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +49,7 @@
 			children = (
 				ED9133801C31B319009AD4AD /* seamless */,
 				ED91337F1C31B319009AD4AD /* Products */,
+				ED0D03951C4CAAD2002F198A /* CoreLocation.framework */,
 			);
 			sourceTree = "<group>";
 		};

@@ -6,6 +6,7 @@
 //  Copyright © 2015 Shibani Mookerjee. All rights reserved.
 //
 import UIKit
+import CoreLocation
 
 struct JsonFeed {
     static var JSONData:JSON = ""
@@ -13,9 +14,10 @@ struct JsonFeed {
 
 class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDataDelegate {
     
-    var manager: OneShotLocationManager?
-    //CLLocationManagerDelegate, CLLocationManager
+    //var manager: OneShotLocationManager?
     
+    var locationManager:CLLocationManager!
+        
     lazy var data = NSMutableData()
     
     var restos = [[String: String]]()
@@ -43,7 +45,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        manager = OneShotLocationManager()
+        /*manager = OneShotLocationManager()
         manager!.fetchWithCompletion {location, error in
             
             // fetch location or an error
@@ -53,9 +55,13 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 print(err.localizedDescription)
             }
             self.manager = nil
-        }
+        }*/
         
-        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
        
         let urlString = "http://www.bigchomp.com/json/feed-for-app.php"
         
@@ -71,6 +77,10 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 }
             }
         }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("locations = \(locations)")
     }
     
     func parseListJSON(json: JSON) {
