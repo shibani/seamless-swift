@@ -26,19 +26,6 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     var chosenCellName = ""
     
-    /*var sortedKeys:[String:String] = [
-        "Rest-0":"Burgers, Hotdogs",
-        "Rest-1":"Pizza",
-        "Rest-2":"Chinese",
-        "Rest-3":"Indian",
-        "Rest-4":"Coffee",
-        "Rest-5":"Italian",
-        "Rest-6":"American",
-        "Rest-7":"Pizza",
-        "Rest-8":"Chinese",
-        "Rest-9":"Sushi"
-    ]*/
-    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -57,13 +44,17 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             self.manager = nil
         }*/
         
-        locationManager = CLLocationManager()
+        /*locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.startUpdatingLocation()*/
+        
+        let searchString = "10010"
+        
+        let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
        
-        let urlString = "http://www.bigchomp.com/json/feed-for-app.php"
+        let urlString = "http://www.bigchomp.com/json/restaurants?search=\(escapedSearchString!)"
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -72,9 +63,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 
                 JsonFeed.JSONData = json
                 
-                if json[0]["name"] == "Rest-0" {
-                    parseListJSON(json)
-                }
+                parseListJSON(json)
+                
             }
         }
     }
@@ -105,6 +95,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
+        //let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath)
+            
         
         //print(indexPath.row)
         

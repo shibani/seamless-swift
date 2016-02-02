@@ -8,14 +8,23 @@
 
 import UIKit
 
-class RestoViewController: UIViewController {
+class RestoViewController: UIViewController, UITableViewDataSource, NSURLConnectionDataDelegate{
     
     var receivedCellIndex = 0
+    
     var receivedCellName = ""
     
     var zips = [[String: String]]()
+    
+    lazy var restoData = NSMutableData()
+    
+    var restoJSONData:JSON = ""
+    
+    var menuItems = [[String: String]]()
 
     @IBOutlet weak var restoLabel: UILabel!
+    
+    @IBOutlet weak var menuItemView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +33,22 @@ class RestoViewController: UIViewController {
         print("Sent by \(receivedCellName) at \(receivedCellIndex)")
         restoLabel.text = receivedCellName
         
-        //print(JsonFeed.JSONData)
+        let escapedString = receivedCellName.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
-        parseDetailJSON(JsonFeed.JSONData)
-        print(zips)
+        let urlString = "http://www.bigchomp.com/json/restaurants/\(escapedString!)"
+        
+        
+        if let url = NSURL(string: urlString) {
+            if let restoData = try? NSData(contentsOfURL: url, options: []) {
+                let json = JSON(data: restoData)
+                
+                restoJSONData = json
+                
+                parseMenuJSON(restoJSONData)
+            }
+        }
+        
+        menuItemView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,25 +56,44 @@ class RestoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func parseDetailJSON(json: JSON) {
-        for resto in json.arrayValue {
-            let name = resto["name"].stringValue
-            if name == receivedCellName {
-                let zip = resto["zip"].stringValue
-                let obj = ["name": name, "zip": zip]
-                zips.append(obj)
+    
+    func parseMenuJSON(json: JSON) {
+        for(key,subJson):(String, JSON) in json {
+            let name = key
+            let menuCat = ["name": name]
+            
+            menuItems.append(menuCat)
+            
+            for menuItem in subJson.arrayValue {
+                let name = menuItem["name"].stringValue
+                let price = menuItem["price"].stringValue
+                let description = menuItem["description"].stringValue
+                let obj = ["name": name, "price": price, "description": description]
+                
+                menuItems.append(obj)
             }
         }
+        
+        print("count: \(menuItems.count)")
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func tableView(menuItemView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
     }
-    */
-
+    
+    func tableView(menuItemView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
+        
+        //print(indexPath.row)
+        
+        cell.textLabel?.text = menuItems[indexPath.row]["name"]
+        cell.detailTextLabel?.text = menuItems[indexPath.row]["price"]
+        
+        return cell
+    }
+    
+    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    }*/
+    
 }
