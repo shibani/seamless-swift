@@ -9,7 +9,7 @@ import UIKit
 import CoreLocation
 
 /*struct JsonFeed {
-    static var JSONData:JSON = ""
+static var JSONData:JSON = ""
 }*/
 
 class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     var manager: OneShotLocationManager?
     
     var locationManager:CLLocationManager!
-        
+    
     lazy var data = NSMutableData()
     
     var restos = [[String: String]]()
@@ -27,6 +27,10 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     var chosenCellName = ""
     
     var loc: CLLocation!
+    
+    var refreshControl = UIRefreshControl()
+    
+    var cell : UITableViewCell?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -52,11 +56,17 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         searchField.delegate = self
         
-        searchLocations("10010")
-    
+        searchLocations("10010", clicked: false)
+        
     }
     
-    func searchLocations(str:String){
+    override func viewDidAppear(animated: Bool) {
+        
+        //self.tableView.reloadData()
+    }
+    
+    
+    func searchLocations(str:String, clicked:Bool){
         
         let searchString = str
         
@@ -71,35 +81,43 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 
                 let JSONData = json
                 
-                parseListJSON(JSONData)
+                let clicked = false
+                
+                parseListJSON(JSONData, clicked:clicked)
                 
             }
         }
+        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         print("searchText \(searchBar.text!)")
         
-        searchLocations(searchBar.text!)
+        let clicked = true
         
-        /*dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-            self.tableView?.reloadData()
-        })*/
+        searchLocations(searchBar.text!, clicked:clicked)
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("locations = \(locations)")
     }
     
-    func parseListJSON(json: JSON) {
+    func parseListJSON(json: JSON, clicked:Bool) {
         for resto in json.arrayValue {
             let name = resto["name"].stringValue
             let type = resto["type"].stringValue
             let obj = ["name": name, "type": type]
             restos.append(obj)
         }
+        
+        if clicked == true {
+            //self.tableView?.reloadData()
+            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                self.tableView?.reloadData()
+            })
+        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -112,8 +130,11 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
+        //let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
+        if !(cell != nil) {
+            cell = UITableViewCell(style:UITableViewCellStyle.Value1, reuseIdentifier: "CELL")
+        }
         
         cell.textLabel?.text = restos[indexPath.row]["name"] //resto.key
         cell.detailTextLabel?.text = restos[indexPath.row]["type"] //resto.value
@@ -128,7 +149,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
         
         self.performSegueWithIdentifier("loadRestoView", sender: self)
-    
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -140,7 +161,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         restoViewController.receivedCellIndex = chosenCellIndex
         restoViewController.receivedCellName = chosenCellName
     }
-
-      
+    
+    
 }
 
