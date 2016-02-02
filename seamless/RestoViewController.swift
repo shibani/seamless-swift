@@ -73,8 +73,6 @@ class RestoViewController: UIViewController, UITableViewDataSource, NSURLConnect
                 menuItems.append(obj)
             }
         }
-        
-        print("count: \(menuItems.count)")
     }
     
     
@@ -88,7 +86,12 @@ class RestoViewController: UIViewController, UITableViewDataSource, NSURLConnect
         //print(indexPath.row)
         
         cell.textLabel?.text = menuItems[indexPath.row]["name"]
-        cell.detailTextLabel?.text = menuItems[indexPath.row]["price"]
+        
+        if menuItems[indexPath.row]["price"] == nil {
+            cell.backgroundColor = UIColor.blueColor()
+        } else {
+            cell.detailTextLabel?.text = menuItems[indexPath.row]["price"]
+        }
         
         return cell
     }

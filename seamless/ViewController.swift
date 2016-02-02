@@ -8,13 +8,13 @@
 import UIKit
 import CoreLocation
 
-struct JsonFeed {
+/*struct JsonFeed {
     static var JSONData:JSON = ""
-}
+}*/
 
-class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDataDelegate {
+class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
     
-    //var manager: OneShotLocationManager?
+    var manager: OneShotLocationManager?
     
     var locationManager:CLLocationManager!
         
@@ -26,34 +26,42 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     var chosenCellName = ""
     
+    var loc: CLLocation!
+    
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var searchField: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
-        /*manager = OneShotLocationManager()
+        manager = OneShotLocationManager()
         manager!.fetchWithCompletion {location, error in
             
             // fetch location or an error
-            if let loc = location {
-                print("location: \(loc)")
+            if (location != nil) {
+                self.loc = location
+                print("location: \(self.loc)")
             } else if let err = error {
                 print(err.localizedDescription)
             }
             self.manager = nil
-        }*/
+        }
         
-        /*locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()*/
+        searchField.delegate = self
         
-        let searchString = "10010"
+        searchLocations("10010")
+    
+    }
+    
+    func searchLocations(str:String){
+        
+        let searchString = str
         
         let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-       
+        
         let urlString = "http://www.bigchomp.com/json/restaurants?search=\(escapedSearchString!)"
         
         if let url = NSURL(string: urlString) {
@@ -61,12 +69,22 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 let json = JSON(data: data)
                 print(json[0]["name"])
                 
-                JsonFeed.JSONData = json
+                let JSONData = json
                 
-                parseListJSON(json)
+                parseListJSON(JSONData)
                 
             }
         }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("searchText \(searchBar.text!)")
+        
+        searchLocations(searchBar.text!)
+        
+        /*dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+            self.tableView?.reloadData()
+        })*/
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -94,11 +112,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
-        //let cell = tableView.dequeueReusableCellWithIdentifier("CellIdentifier", forIndexPath: indexPath)
-            
-        
-        //print(indexPath.row)
+        //let cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
         
         cell.textLabel?.text = restos[indexPath.row]["name"] //resto.key
         cell.detailTextLabel?.text = restos[indexPath.row]["type"] //resto.value
