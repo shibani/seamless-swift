@@ -55,10 +55,32 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         tableView?.delegate = self
         
-        self.getLocation()
+        manager = OneShotLocationManager()
+        manager!.fetchWithCompletion {location, error in
+            
+            // fetch location or an error
+            if let loc = location {
+                
+                print(loc.coordinate.latitude)
+                print("loc: \(loc)")
+                
+                let latitude :CLLocationDegrees = loc.coordinate.latitude
+                let longitude :CLLocationDegrees = loc.coordinate.longitude
+                let newLocation = CLLocation(latitude: latitude, longitude: longitude)
+                
+                self.loadFirstRestos("10010")
+                
+            } else if let err = error {
+                print(err.localizedDescription)
+            }
+            self.manager = nil
+        }
         
+        print("location: \(loc)")
+        //self.getLocation()
         //self.loadFirstRestos(zip!)
-        self.loadFirstRestos("10010")
+        //self.loadFirstRestos("10010")
+        self.tableView?.reloadData()
         
     }
     
@@ -177,7 +199,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         print("restos: \(restos)")
         self.isLoadingRestaurants = false
-        self.tableView?.reloadData()
+        //self.tableView?.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -196,6 +218,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         //TO-DO - add code to load more restos on scrolling here
         
         return cell
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
