@@ -1,5 +1,5 @@
 //
-//  RestoViewController.swift
+//  MenuViewController.swift
 //  seamless
 //
 //  Created by Shibani Mookerjee on 1/2/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RestoViewController: UIViewController, UITableViewDataSource, NSURLConnectionDataDelegate{
+class MenuViewController: UIViewController, UITableViewDataSource, NSURLConnectionDataDelegate{
     
     var receivedCellIndex = 0
     

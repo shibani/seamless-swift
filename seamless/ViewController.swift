@@ -1,24 +1,29 @@
 //
 //  ViewController.swift
-//  seamless
+//  newseamless
 //
-//  Created by Shibani Mookerjee on 12/28/15.
-//  Copyright © 2015 Shibani Mookerjee. All rights reserved.
+//  Created by Shibani Mookerjee on 2/2/16.
+//  Copyright © 2016 Shibani Mookerjee. All rights reserved.
 //
+
 import UIKit
 import CoreLocation
 
-/*struct JsonFeed {
-static var JSONData:JSON = ""
-}*/
-
-class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
+class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, UITableViewDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
     
-    var manager: OneShotLocationManager?
+    //TO-DO - load a location based resto set dynamically
+    //TO-DO - optimize json feed
+    //TO-DO - sort json feed
+    //TO-DO - reload tableView on search bar submit
+    //TO-DO - add code to load more restos on scrolling in tableView: cellForRowAtIndexPath
     
     var locationManager:CLLocationManager!
     
-    lazy var data = NSMutableData()
+    var loc: CLLocation!
+    
+    var manager: OneShotLocationManager?
+    
+    var data = NSMutableData()
     
     var restos = [[String: String]]()
     
@@ -26,47 +31,98 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     var chosenCellName = ""
     
-    var loc: CLLocation!
-    
     var refreshControl = UIRefreshControl()
     
     var cell : UITableViewCell?
     
-    @IBOutlet weak var tableView: UITableView!
+    var zip : String?
+    
+    var isLoadingRestaurants = false
+    
+    @IBOutlet weak var tableView: UITableView?
     
     @IBOutlet weak var searchField: UISearchBar!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
+        self.tableView?.contentInset = UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0);
         
+        searchField.delegate = self
+        
+        tableView?.dataSource = self
+        
+        tableView?.delegate = self
+        
+        self.getLocation()
+        
+        //self.loadFirstRestos(zip!)
+        self.loadFirstRestos("10010")
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getLocation(){
         manager = OneShotLocationManager()
         manager!.fetchWithCompletion {location, error in
             
             // fetch location or an error
-            if (location != nil) {
-                self.loc = location
-                print("location: \(self.loc)")
+            if let loc = location {
+                
+                print(loc.coordinate.latitude)
+                
+                let latitude :CLLocationDegrees = loc.coordinate.latitude
+                let longitude :CLLocationDegrees = loc.coordinate.longitude
+                let newLocation = CLLocation(latitude: latitude, longitude: longitude)
+                
+                let geocoder = CLGeocoder()
+                
+                geocoder.reverseGeocodeLocation(newLocation, completionHandler: {(placemarks, error)->Void in
+                    
+                    //var placemark:CLPlacemark!
+                    
+                    if (error != nil) {
+                        print("reverse geodcode fail: \(error!.localizedDescription)")
+                        return
+                    }
+                    
+                    if let placemark = placemarks?.first {
+                        self.displayLocationInfo(placemark)
+                    }
+                    
+                    else {
+                        print("No Placemarks!")
+                        return
+                    }
+                })
             } else if let err = error {
                 print(err.localizedDescription)
             }
             self.manager = nil
         }
-        
-        searchField.delegate = self
-        
-        searchLocations("10010", clicked: false)
-        
     }
     
-    override func viewDidAppear(animated: Bool) {
+    func displayLocationInfo(placemark: CLPlacemark){
+        //self.LocationManager.stopUpdatingLocation()
+        print(placemark.thoroughfare)
+        print(placemark.locality)
+        print(placemark.postalCode)
+        print(placemark.administrativeArea)
+        print(placemark.country)
         
-        //self.tableView.reloadData()
+        zip = placemark.postalCode
+        
+        //self.loadFirstRestos(zip!)
     }
     
-    
-    func searchLocations(str:String, clicked:Bool){
+    func loadFirstRestos(str:String){
+        
+        isLoadingRestaurants = true
         
         let searchString = str
         
@@ -81,28 +137,37 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 
                 let JSONData = json
                 
-                let clicked = false
-                
-                parseListJSON(JSONData, clicked:clicked)
+                parseListJSON(JSONData)
                 
             }
         }
-        
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("searchText \(searchBar.text!)")
+    func loadSearchRestos(str:String){
         
-        let clicked = true
+        self.isLoadingRestaurants = true
         
-        searchLocations(searchBar.text!, clicked:clicked)
+        let searchString = str
+        
+        let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+        
+        let urlString = "http://www.bigchomp.com/json/restaurants?search=\(escapedSearchString!)"
+        
+        if let url = NSURL(string: urlString) {
+            if let data = try? NSData(contentsOfURL: url, options: []) {
+                let json = JSON(data: data)
+                print(json[0]["name"])
+                
+                let JSONData = json
+                
+                parseListJSON(JSONData)
+                
+            }
+        }
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("locations = \(locations)")
-    }
-    
-    func parseListJSON(json: JSON, clicked:Bool) {
+    func parseListJSON(json: JSON) {
+        restos = []
         for resto in json.arrayValue {
             let name = resto["name"].stringValue
             let type = resto["type"].stringValue
@@ -110,34 +175,26 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             restos.append(obj)
         }
         
-        if clicked == true {
-            //self.tableView?.reloadData()
-            dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                self.tableView?.reloadData()
-            })
-        }
+        print("restos: \(restos)")
+        self.isLoadingRestaurants = false
+        self.tableView?.reloadData()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return sortedKeys.count
+        print("count: \(restos.count)")
         return restos.count
+    
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as UITableViewCell!
-        //let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "Cell")
-        if !(cell != nil) {
-            cell = UITableViewCell(style:UITableViewCellStyle.Value1, reuseIdentifier: "CELL")
-        }
+        
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "RestoCell")
         
         cell.textLabel?.text = restos[indexPath.row]["name"] //resto.key
         cell.detailTextLabel?.text = restos[indexPath.row]["type"] //resto.value
+        
+        //TO-DO - add code to load more restos on scrolling here
+        
         return cell
     }
     
@@ -148,20 +205,19 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
         
-        self.performSegueWithIdentifier("loadRestoView", sender: self)
+        self.performSegueWithIdentifier("loadMenuView", sender: self)
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // get a reference to the second view controller
-        let restoViewController = segue.destinationViewController as! RestoViewController
+        let menuViewController = segue.destinationViewController as! MenuViewController
         
         // set a variable in the second view controller with the data to pass
-        restoViewController.receivedCellIndex = chosenCellIndex
-        restoViewController.receivedCellName = chosenCellName
+        menuViewController.receivedCellIndex = chosenCellIndex
+        menuViewController.receivedCellName = chosenCellName
     }
     
     
 }
-
