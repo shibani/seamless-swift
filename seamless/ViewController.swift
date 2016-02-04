@@ -11,15 +11,15 @@ import CoreLocation
 
 class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, UITableViewDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
     
-    //TO-DO - load a location based resto set dynamically
+    //DONE - load a location based resto set dynamically
+    //DONE - reload tableView on search bar submit
     //TO-DO - optimize json feed
     //TO-DO - sort json feed
-    //TO-DO - reload tableView on search bar submit
     //TO-DO - add code to load more restos on scrolling in tableView: cellForRowAtIndexPath
     
-    var locationManager:CLLocationManager!
-    
     var loc: CLLocation!
+    
+    var currentLocation: CLLocation!
     
     var manager: OneShotLocationManager?
     
@@ -39,21 +39,17 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     var isLoadingRestaurants = false
     
-    @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var searchField: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.tableView?.contentInset = UIEdgeInsetsMake(80.0, 0.0, 0.0, 0.0);
+        self.tableView?.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
         
-        searchField.delegate = self
-        
-        tableView?.dataSource = self
-        
-        tableView?.delegate = self
+        searchBar.delegate = self
         
         manager = OneShotLocationManager()
         manager!.fetchWithCompletion {location, error in
@@ -61,14 +57,12 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             // fetch location or an error
             if let loc = location {
                 
-                print(loc.coordinate.latitude)
-                print("loc: \(loc)")
+                print("latitude: \(loc.coordinate.latitude)")
+                print("longitude: \(loc.coordinate.longitude)")
                 
-                let latitude :CLLocationDegrees = loc.coordinate.latitude
-                let longitude :CLLocationDegrees = loc.coordinate.longitude
-                let newLocation = CLLocation(latitude: latitude, longitude: longitude)
-                
-                self.loadFirstRestos("10010")
+                let str :String = "latitude=\(loc.coordinate.latitude)&longitude=\(loc.coordinate.longitude)"
+            
+                self.loadSearchRestos(str)
                 
             } else if let err = error {
                 print(err.localizedDescription)
@@ -76,12 +70,13 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             self.manager = nil
         }
         
-        print("location: \(loc)")
-        //self.getLocation()
-        //self.loadFirstRestos(zip!)
-        //self.loadFirstRestos("10010")
-        self.tableView?.reloadData()
+        tableView?.dataSource = self
         
+        tableView?.delegate = self
+        
+        //var str = "search=455 Graham Ave, Brooklyn, NY 11222"
+        //let latlongstr = "latitude=40.759211&longitude=-73.984638"
+        //self.loadFirstRestos(escapedString(str))
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,57 +84,23 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         // Dispose of any resources that can be recreated.
     }
     
-    func getLocation(){
-        manager = OneShotLocationManager()
-        manager!.fetchWithCompletion {location, error in
-            
-            // fetch location or an error
-            if let loc = location {
-                
-                print(loc.coordinate.latitude)
-                
-                let latitude :CLLocationDegrees = loc.coordinate.latitude
-                let longitude :CLLocationDegrees = loc.coordinate.longitude
-                let newLocation = CLLocation(latitude: latitude, longitude: longitude)
-                
-                let geocoder = CLGeocoder()
-                
-                geocoder.reverseGeocodeLocation(newLocation, completionHandler: {(placemarks, error)->Void in
-                    
-                    //var placemark:CLPlacemark!
-                    
-                    if (error != nil) {
-                        print("reverse geodcode fail: \(error!.localizedDescription)")
-                        return
-                    }
-                    
-                    if let placemark = placemarks?.first {
-                        self.displayLocationInfo(placemark)
-                    }
-                    
-                    else {
-                        print("No Placemarks!")
-                        return
-                    }
-                })
-            } else if let err = error {
-                print(err.localizedDescription)
-            }
-            self.manager = nil
-        }
+    func escapedString(str: String) -> String{
+        return str.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
     }
     
-    func displayLocationInfo(placemark: CLPlacemark){
-        //self.LocationManager.stopUpdatingLocation()
-        print(placemark.thoroughfare)
-        print(placemark.locality)
-        print(placemark.postalCode)
-        print(placemark.administrativeArea)
-        print(placemark.country)
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        print("searchText \(searchBar.text!)")
+        self.view.endEditing(true)
         
-        zip = placemark.postalCode
+        let str :String = "search=\(searchBar.text!)"
         
-        //self.loadFirstRestos(zip!)
+        loadSearchRestos(escapedString(str))
+    }
+    
+    func refreshUI() {
+        dispatch_async(dispatch_get_main_queue(),{
+            self.tableView!.reloadData()
+        });
     }
     
     func loadFirstRestos(str:String){
@@ -148,9 +109,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         let searchString = str
         
-        let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        
-        let urlString = "http://www.bigchomp.com/json/restaurants?search=\(escapedSearchString!)"
+        let urlString = "http://www.bigchomp.com/json/restaurants?\(searchString)"
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -158,9 +117,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 print(json[0]["name"])
                 
                 let JSONData = json
-                
                 parseListJSON(JSONData)
-                
             }
         }
     }
@@ -171,9 +128,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         let searchString = str
         
-        let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
-        
-        let urlString = "http://www.bigchomp.com/json/restaurants?search=\(escapedSearchString!)"
+        let urlString = "http://www.bigchomp.com/json/restaurants?\(searchString)"
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -182,8 +137,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
                 
                 let JSONData = json
                 
-                parseListJSON(JSONData)
-                
+                parseListAndRefresh(JSONData)
             }
         }
     }
@@ -197,15 +151,36 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             restos.append(obj)
         }
         
-        print("restos: \(restos)")
         self.isLoadingRestaurants = false
-        //self.tableView?.reloadData()
     }
+    
+    func parseListAndRefresh(json: JSON) {
+        restos = []
+        for resto in json.arrayValue {
+            let name = resto["name"].stringValue
+            let type = resto["type"].stringValue
+            let obj = ["name": name, "type": type]
+            restos.append(obj)
+        }
+        
+        //print("restos: \(restos)")
+        self.isLoadingRestaurants = false
+        if restos.count > 0 {
+            self.refreshUI()
+            print("called from search")
+        } else {
+            let obj = ["name": "Sorry no listings were found", "type": ""]
+            restos.append(obj)
+            self.refreshUI()
+        }
+        //self.tableView?.reloadData()
+        print("jsoncount: \(restos.count)")
+    }
+
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("count: \(restos.count)")
         return restos.count
-    
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -218,7 +193,6 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         //TO-DO - add code to load more restos on scrolling here
         
         return cell
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
