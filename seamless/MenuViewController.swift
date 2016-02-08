@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UITableViewDataSource, NSURLConnectionDataDelegate{
+class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSURLConnectionDataDelegate{
     
     var receivedCellIndex = 0
     
@@ -16,11 +16,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, NSURLConnecti
     
     var zips = [[String: String]]()
     
-    lazy var restoData = NSMutableData()
+    var restoData = NSMutableData()
     
     var restoJSONData:JSON = ""
     
-    var menuItems = [[String: String]]()
+    var menuItemsArray = [[String: String]]()
 
     @IBOutlet weak var restoLabel: UILabel!
     
@@ -45,10 +45,15 @@ class MenuViewController: UIViewController, UITableViewDataSource, NSURLConnecti
                 restoJSONData = json
                 
                 parseMenuJSON(restoJSONData)
+                
+                print(restoJSONData)
             }
         }
         
         menuItemView.dataSource = self
+        
+        menuItemView.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,41 +61,34 @@ class MenuViewController: UIViewController, UITableViewDataSource, NSURLConnecti
         // Dispose of any resources that can be recreated.
     }
     
-    
     func parseMenuJSON(json: JSON) {
-        for(key,subJson):(String, JSON) in json {
-            let name = key
-            let menuCat = ["name": name]
-            
-            menuItems.append(menuCat)
-            
-            for menuItem in subJson.arrayValue {
-                let name = menuItem["name"].stringValue
-                let price = menuItem["price"].stringValue
-                let description = menuItem["description"].stringValue
-                let obj = ["name": name, "price": price, "description": description]
-                
-                menuItems.append(obj)
-            }
+        menuItemsArray = []
+        for menuItem in json.arrayValue {
+            let name = menuItem["name"].stringValue
+            let price = menuItem["price"].stringValue
+            let description = menuItem["description"].stringValue
+            let obj = ["name": name, "price": price, "description": description]
+            menuItemsArray.append(obj)
         }
     }
     
     
     func tableView(menuItemView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItems.count
+        return menuItemsArray.count
     }
     
     func tableView(menuItemView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "MenuCell")
         
         //print(indexPath.row)
         
-        cell.textLabel?.text = menuItems[indexPath.row]["name"]
+        cell.textLabel?.text = menuItemsArray[indexPath.row]["name"]
         
-        if menuItems[indexPath.row]["price"] == nil {
+        if menuItemsArray[indexPath.row]["price"] == "" {
             cell.backgroundColor = UIColor.blueColor()
+            cell.textLabel?.textColor = UIColor.whiteColor()
         } else {
-            cell.detailTextLabel?.text = menuItems[indexPath.row]["price"]
+            cell.detailTextLabel?.text = menuItemsArray[indexPath.row]["price"]
         }
         
         return cell

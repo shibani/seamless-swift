@@ -13,9 +13,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     //DONE - load a location based resto set dynamically
     //DONE - reload tableView on search bar submit
-    //TO-DO - optimize json feed
-    //TO-DO - sort json feed
-    //TO-DO - add code to load more restos on scrolling in tableView: cellForRowAtIndexPath
+    //DONE - sort json feed
+    //TO-DO - optimize json feed/memory - limit results and then load more on scroll? in tableView: cellForRowAtIndexPath?
     
     var loc: CLLocation!
     
@@ -89,12 +88,16 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("searchText \(searchBar.text!)")
-        self.view.endEditing(true)
+        
+        dismissKeyboard()
         
         let str :String = "search=\(searchBar.text!)"
-        
         loadSearchRestos(escapedString(str))
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.searchBar.endEditing(true)
     }
     
     func refreshUI() {
@@ -196,6 +199,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        dismissKeyboard()
         
         chosenCellIndex = indexPath.row
         chosenCellName = restos[indexPath.row]["name"]!
