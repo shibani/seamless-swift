@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="801" y="35"/>
+            <point key="canvasLocation" x="721" y="81"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Vru-cb-nAA">
@@ -138,11 +138,67 @@
                     <connections>
                         <outlet property="menuItemView" destination="FJr-AP-Se0" id="Hc1-nm-1Er"/>
                         <outlet property="restoLabel" destination="Qy8-wC-PtH" id="eBf-4m-klC"/>
+                        <segue destination="Efl-mT-Gkd" kind="push" identifier="loadMenuDetailView" id="WLe-JB-Ehq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zj1-jb-ulT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1325" y="81"/>
+            <point key="canvasLocation" x="1093" y="75"/>
+        </scene>
+        <!--Menu Detail View Controller-->
+        <scene sceneID="shj-Te-B3d">
+            <objects>
+                <viewController id="Efl-mT-Gkd" customClass="MenuDetailViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hJl-OB-EAQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="GhI-iz-wpa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8ja-DK-s1f">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Menu Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucT-H1-bsk">
+                                <rect key="frame" x="118" y="80" width="84" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mH-2X-6Q8">
+                                <rect key="frame" x="39" y="258" width="242" height="117"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZj-vU-MTR">
+                                <rect key="frame" x="225" y="144" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEl-vu-ngm">
+                                <rect key="frame" x="113" y="500" width="95" height="30"/>
+                                <state key="normal" title="Add to Bag"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SIZ-8N-C2X">
+                                <rect key="frame" x="39" y="144" width="169" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pCq-2T-zag"/>
+                    <connections>
+                        <outlet property="AddToBag" destination="tEl-vu-ngm" id="gnR-FK-frB"/>
+                        <outlet property="menuItemDescription" destination="0mH-2X-6Q8" id="CjV-j5-da6"/>
+                        <outlet property="menuItemName" destination="SIZ-8N-C2X" id="vWv-7R-UDW"/>
+                        <outlet property="menuItemPrice" destination="YZj-vU-MTR" id="QTb-yZ-8op"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wwy-w9-KqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1478" y="75"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nfz-UV-fYX">

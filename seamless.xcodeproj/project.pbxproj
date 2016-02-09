@@ -16,6 +16,8 @@
 		ED9133871C31B319009AD4AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9133851C31B319009AD4AD /* Main.storyboard */; };
 		ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9133881C31B319009AD4AD /* Assets.xcassets */; };
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
+		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		ED9133881C31B319009AD4AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED91338B1C31B319009AD4AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
+		EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = ../TopAlignedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
 				ED9133831C31B319009AD4AD /* ViewController.swift */,
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
+				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
+				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */,
 				ED91338D1C31B319009AD4AD /* Info.plist */,
@@ -147,7 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
+				EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,

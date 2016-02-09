@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     //DONE - load a location based resto set dynamically
     //DONE - reload tableView on search bar submit
     //DONE - sort json feed
-    //TO-DO - optimize json feed/memory - limit results and then load more on scroll? in tableView: cellForRowAtIndexPath?
+    //TO-DO - optimize json feed/memory - limit results to 10 and then load more on scroll? in tableView: cellForRowAtIndexPath
     
     var loc: CLLocation!
     
@@ -106,6 +106,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         });
     }
     
+    // MARK: - Load and Parse JSON
+    
     func loadFirstRestos(str:String){
         
         isLoadingRestaurants = true
@@ -179,8 +181,9 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         //self.tableView?.reloadData()
         print("jsoncount: \(restos.count)")
     }
-
     
+    // MARK: - Table view data source
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("count: \(restos.count)")
         return restos.count
@@ -192,8 +195,6 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         cell.textLabel?.text = restos[indexPath.row]["name"] //resto.key
         cell.detailTextLabel?.text = restos[indexPath.row]["type"] //resto.value
-        
-        //TO-DO - add code to load more restos on scrolling here
         
         return cell
     }

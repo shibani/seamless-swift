@@ -14,6 +14,14 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var receivedCellName = ""
     
+    var chosenCellIndex = 0
+    
+    var chosenCellName = ""
+    
+    var chosenCellDescription = ""
+    
+    var chosenCellPrice = ""
+    
     var zips = [[String: String]]()
     
     var restoData = NSMutableData()
@@ -21,6 +29,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var restoJSONData:JSON = ""
     
     var menuItemsArray = [[String: String]]()
+    
+    var sectionItemsArray = [[String: String]]()
 
     @IBOutlet weak var restoLabel: UILabel!
     
@@ -46,7 +56,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 parseMenuJSON(restoJSONData)
                 
-                print(restoJSONData)
+                //print(restoJSONData)
             }
         }
         
@@ -61,20 +71,37 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Parse JSON
+    
     func parseMenuJSON(json: JSON) {
         menuItemsArray = []
         for menuItem in json.arrayValue {
             let name = menuItem["name"].stringValue
             let price = menuItem["price"].stringValue
             let description = menuItem["description"].stringValue
-            let obj = ["name": name, "price": price, "description": description]
-            menuItemsArray.append(obj)
+            if price == "" && description == "" {
+                let header_obj = ["name": name]
+                sectionItemsArray.append(header_obj)
+            } else {
+                let obj = ["name": name, "price": price, "description": description]
+                menuItemsArray.append(obj)
+            }
         }
     }
     
+    // MARK: - Table view data source
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return sectionItemsArray.count
+    }
     
     func tableView(menuItemView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItemsArray.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionTitle = sectionItemsArray[section].first! //this returns a tuple
+        return "\(sectionTitle.1)"
     }
     
     func tableView(menuItemView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -94,7 +121,34 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
     
-    /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    }*/
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        chosenCellIndex = indexPath.row
+        chosenCellName = menuItemsArray[indexPath.row]["name"]!
+        chosenCellDescription = menuItemsArray[indexPath.row]["description"]!
+        chosenCellPrice = menuItemsArray[indexPath.row]["price"]!
+        
+        //print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
+        
+        if chosenCellPrice != "" {
+        
+            self.performSegueWithIdentifier("loadMenuDetailView", sender: self)
+            
+        }
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // get a reference to the second view controller
+        let menuDetailViewController = segue.destinationViewController as! MenuDetailViewController
+        
+        // set a variable in the second view controller with the data to pass
+        menuDetailViewController.receivedCellIndex = chosenCellIndex
+        menuDetailViewController.receivedCellName = chosenCellName
+        menuDetailViewController.receivedCellDescription = chosenCellDescription
+        menuDetailViewController.receivedCellPrice = chosenCellPrice
+        
+    }
     
 }
