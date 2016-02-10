@@ -34,8 +34,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var sectionItemsArray = [[String: String]]()
     
-    var sectionDetailsArray = [[String: String]]()
-    
     var sectionCount = 0
     
     var itemCount = 0
@@ -116,10 +114,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if section == i {
                 
                 //print("mit: section \(i): \(sectionItemsArray[i].first!.1)")
-
                 //itemCount = [menuItemsArray[i]["section"]! == sectionItemsArray[section].first!.1].count
                 //print(menuItemsArray[i]["section"]!) //works
                 //print(sectionItemsArray[section].first!.1) //works
+                
                 itemCount = 0
 
                 for var j = 0; j < menuItemsArray.count ; ++j {
