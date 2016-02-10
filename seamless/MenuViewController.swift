@@ -30,7 +30,15 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var menuItemsArray = [[String: String]]()
     
+    var subMenuItemsArray = [[String: String]]()
+    
     var sectionItemsArray = [[String: String]]()
+    
+    var sectionDetailsArray = [[String: String]]()
+    
+    var sectionCount = 0
+    
+    var itemCount = 0
 
     @IBOutlet weak var restoLabel: UILabel!
     
@@ -79,11 +87,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let name = menuItem["name"].stringValue
             let price = menuItem["price"].stringValue
             let description = menuItem["description"].stringValue
+            let section = menuItem["section"].stringValue
             if price == "" && description == "" {
                 let header_obj = ["name": name]
                 sectionItemsArray.append(header_obj)
             } else {
-                let obj = ["name": name, "price": price, "description": description]
+                let obj = ["name": name, "price": price, "description": description, "section":section]
                 menuItemsArray.append(obj)
             }
         }
@@ -95,31 +104,78 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return sectionItemsArray.count
     }
     
-    func tableView(menuItemView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuItemsArray.count
-    }
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitle = sectionItemsArray[section].first! //this returns a tuple
         return "\(sectionTitle.1)"
     }
     
+    func tableView(menuItemView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        for var i = 0; i < sectionItemsArray.count ; ++i {
+            
+            if section == i {
+                
+                //print("mit: section \(i): \(sectionItemsArray[i].first!.1)")
+
+                //itemCount = [menuItemsArray[i]["section"]! == sectionItemsArray[section].first!.1].count
+                //print(menuItemsArray[i]["section"]!) //works
+                //print(sectionItemsArray[section].first!.1) //works
+                itemCount = 0
+
+                for var j = 0; j < menuItemsArray.count ; ++j {
+                    
+                    if menuItemsArray[j]["section"]! == sectionItemsArray[i].first!.1 {
+                        itemCount += 1
+                    }
+                }
+                
+                //itemCount = 2
+                //print(itemCount)
+            }
+        }
+        
+        return itemCount
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.blueColor()
+        header.textLabel?.textColor = UIColor.whiteColor() //make the text white
+        //header.alpha = 0.5 //make the header transparent
+    }
+    
     func tableView(menuItemView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "MenuCell")
         
-        //print(indexPath.row)
+        //print("section:\(indexPath.section)")
+        //print("row: \(indexPath.row)")
+        //cell.textLabel?.text = menuItemsArray[indexPath.row]["name"]
+        //cell.detailTextLabel?.text = menuItemsArray[indexPath.row]["price"]
         
-        cell.textLabel?.text = menuItemsArray[indexPath.row]["name"]
-        
-        if menuItemsArray[indexPath.row]["price"] == "" {
-            cell.backgroundColor = UIColor.blueColor()
-            cell.textLabel?.textColor = UIColor.whiteColor()
-        } else {
-            cell.detailTextLabel?.text = menuItemsArray[indexPath.row]["price"]
+        for var i = 0; i < sectionItemsArray.count ; ++i {
+            
+            if indexPath.section == i {
+                
+                subMenuItemsArray = []
+                
+                for var j = 0; j < menuItemsArray.count ; ++j {
+                    
+                    if menuItemsArray[j]["section"]! == sectionItemsArray[indexPath.section].first!.1 {
+                        
+                        subMenuItemsArray.append(menuItemsArray[j])
+                    }
+                }
+                
+                print(subMenuItemsArray.count)
+                
+                cell.textLabel?.text = subMenuItemsArray[indexPath.row]["name"]
+                cell.detailTextLabel?.text = subMenuItemsArray[indexPath.row]["price"]
+            }
         }
         
         return cell
     }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
