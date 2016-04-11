@@ -16,6 +16,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     var chosenCellIndex = 0
     
+    var chosenCellSection = 0
+    
+    var rowNumber = 0
+    
     var chosenCellName = ""
     
     var chosenCellDescription = ""
@@ -37,6 +41,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var sectionCount = 0
     
     var itemCount = 0
+    
+    var row = 0
 
     @IBOutlet weak var restoLabel: UILabel!
     
@@ -143,12 +149,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(menuItemView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "MenuCell")
         
-        //print("section:\(indexPath.section)")
-        //print("row: \(indexPath.row)")
-        //cell.textLabel?.text = menuItemsArray[indexPath.row]["name"]
-        //cell.detailTextLabel?.text = menuItemsArray[indexPath.row]["price"]
+        let cell = menuItemView.dequeueReusableCellWithIdentifier("MenuTableViewCell", forIndexPath: indexPath) as! MenuTableViewCell
+        
         
         for var i = 0; i < sectionItemsArray.count ; ++i {
             
@@ -166,8 +169,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 print(subMenuItemsArray.count)
                 
-                cell.textLabel?.text = subMenuItemsArray[indexPath.row]["name"]
-                cell.detailTextLabel?.text = subMenuItemsArray[indexPath.row]["price"]
+                cell.menuItemName?.text = subMenuItemsArray[indexPath.row]["name"]
+                cell.menuItemPrice?.text = subMenuItemsArray[indexPath.row]["price"]
+                cell.menuItemDescription?.text = subMenuItemsArray[indexPath.row]["description"]
+                
             }
         }
         
@@ -175,14 +180,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(menuTableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        chosenCellIndex = indexPath.row
-        chosenCellName = menuItemsArray[indexPath.row]["name"]!
-        chosenCellDescription = menuItemsArray[indexPath.row]["description"]!
-        chosenCellPrice = menuItemsArray[indexPath.row]["price"]!
+        let selectedCell = menuTableView.cellForRowAtIndexPath(indexPath) as! MenuTableViewCell
         
-        //print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
+        chosenCellName = (selectedCell.menuItemName?.text)!
+        chosenCellPrice = (selectedCell.menuItemPrice?.text)!
+        chosenCellDescription = (selectedCell.menuItemDescription?.text)!
         
         if chosenCellPrice != "" {
         
@@ -192,16 +196,18 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         // get a reference to the second view controller
         let menuDetailViewController = segue.destinationViewController as! MenuDetailViewController
         
         // set a variable in the second view controller with the data to pass
-        menuDetailViewController.receivedCellIndex = chosenCellIndex
+        //menuDetailViewController.receivedCellIndex = chosenCellIndex
+        
         menuDetailViewController.receivedCellName = chosenCellName
-        menuDetailViewController.receivedCellDescription = chosenCellDescription
         menuDetailViewController.receivedCellPrice = chosenCellPrice
+        menuDetailViewController.receivedCellDescription = chosenCellDescription
         
     }
     

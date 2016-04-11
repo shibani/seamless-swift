@@ -10,6 +10,7 @@
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
+		ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E62641C61626400C8174C /* OneShotLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
 		ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E62661C61627500C8174C /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133811C31B319009AD4AD /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		ED8E62641C61626400C8174C /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 		ED8E62661C61627500C8174C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		ED91337E1C31B319009AD4AD /* seamless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seamless.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
 				ED9133831C31B319009AD4AD /* ViewController.swift */,
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
+				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
 				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			files = (
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
+				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
