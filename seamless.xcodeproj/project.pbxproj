@@ -19,6 +19,9 @@
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		EDE8699A1CC3F3DF0086AD0C /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE869981CC3F3DF0086AD0C /* FAIcon.swift */; settings = {ASSET_TAGS = (); }; };
+		EDE8699B1CC3F3DF0086AD0C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */; settings = {ASSET_TAGS = (); }; };
+		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = ../TopAlignedLabel.swift; sourceTree = "<group>"; };
+		EDE869981CC3F3DF0086AD0C /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
+		EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +76,10 @@
 		ED9133801C31B319009AD4AD /* seamless */ = {
 			isa = PBXGroup;
 			children = (
+				EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */,
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
+				EDE869981CC3F3DF0086AD0C /* FAIcon.swift */,
+				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
@@ -78,7 +87,7 @@
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
 				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
-				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
+				EDE8699E1CC3F5710086AD0C /* CartViewController.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */,
 				ED91338D1C31B319009AD4AD /* Info.plist */,
@@ -146,6 +155,7 @@
 				ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */,
 				ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */,
 				ED9133871C31B319009AD4AD /* Main.storyboard in Resources */,
+				EDE8699B1CC3F3DF0086AD0C /* FontAwesome.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDE8699A1CC3F3DF0086AD0C /* FAIcon.swift in Sources */,
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
+				EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */,

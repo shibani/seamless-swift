@@ -119,7 +119,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
                 let json = JSON(data: data)
-                print(json[0]["name"])
+                //print(json[0]["name"])
                 
                 let JSONData = json
                 parseListJSON(JSONData)
@@ -138,7 +138,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
                 let json = JSON(data: data)
-                print(json[0]["name"])
+                //print(json[0]["name"])
                 
                 let JSONData = json
                 
@@ -172,20 +172,20 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         self.isLoadingRestaurants = false
         if restos.count > 0 {
             self.refreshUI()
-            print("called from search")
+            //print("called from search")
         } else {
             let obj = ["name": "Sorry no listings were found", "type": ""]
             restos.append(obj)
             self.refreshUI()
         }
         //self.tableView?.reloadData()
-        print("jsoncount: \(restos.count)")
+        //print("jsoncount: \(restos.count)")
     }
     
     // MARK: - Table view data source
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("count: \(restos.count)")
+        //print("count: \(restos.count)")
         return restos.count
     }
     
@@ -206,7 +206,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         chosenCellIndex = indexPath.row
         chosenCellName = restos[indexPath.row]["name"]!
         
-        print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
+        //print("clicked: \(chosenCellName) at row \(chosenCellIndex)")
         
         self.performSegueWithIdentifier("loadMenuView", sender: self)
         
@@ -214,13 +214,18 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        // get a reference to the second view controller
-        let menuViewController = segue.destinationViewController as! MenuViewController
+        if segue.identifier == "loadMenuView" {
+            // get a reference to the second view controller
+            let menuViewController = segue.destinationViewController as! MenuViewController
         
-        // set a variable in the second view controller with the data to pass
-        menuViewController.receivedCellIndex = chosenCellIndex
-        menuViewController.receivedCellName = chosenCellName
+            // set a variable in the second view controller with the data to pass
+            menuViewController.receivedCellIndex = chosenCellIndex
+            menuViewController.receivedCellName = chosenCellName
+        }
     }
     
-    
+    @IBAction func cartButtonClicked(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("loadShoppingCart", sender: self)
+    }
 }

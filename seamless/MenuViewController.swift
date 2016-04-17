@@ -41,7 +41,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var sectionCount = 0
     
     var itemCount = 0
-    
+
     var row = 0
 
     @IBOutlet weak var restoLabel: UILabel!
@@ -52,13 +52,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        print("Sent by \(receivedCellName) at \(receivedCellIndex)")
+        //print("Sent by \(receivedCellName) at \(receivedCellIndex)")
         restoLabel.text = receivedCellName
         
         let escapedString = receivedCellName.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
         let urlString = "http://www.bigchomp.com/json/restaurants/\(escapedString!)"
-        
         
         if let url = NSURL(string: urlString) {
             if let restoData = try? NSData(contentsOfURL: url, options: []) {
@@ -167,11 +166,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
                 
-                print(subMenuItemsArray.count)
+                //print(subMenuItemsArray.count)
                 
                 cell.menuItemName?.text = subMenuItemsArray[indexPath.row]["name"]
                 cell.menuItemPrice?.text = subMenuItemsArray[indexPath.row]["price"]
-                cell.menuItemDescription?.text = subMenuItemsArray[indexPath.row]["description"]
+                
+                cell.itemDescription = subMenuItemsArray[indexPath.row]["description"]!
                 
             }
         }
@@ -186,7 +186,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         chosenCellName = (selectedCell.menuItemName?.text)!
         chosenCellPrice = (selectedCell.menuItemPrice?.text)!
-        chosenCellDescription = (selectedCell.menuItemDescription?.text)!
+        
+        chosenCellDescription = selectedCell.itemDescription
         
         if chosenCellPrice != "" {
         
@@ -199,16 +200,20 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        // get a reference to the second view controller
-        let menuDetailViewController = segue.destinationViewController as! MenuDetailViewController
+        if segue.identifier == "loadMenuDetailView" {
+            // get a reference to the second view controller
+            let menuDetailViewController = segue.destinationViewController as! MenuDetailViewController
         
-        // set a variable in the second view controller with the data to pass
-        //menuDetailViewController.receivedCellIndex = chosenCellIndex
+            // set a variable in the second view controller with the data to pass
+            menuDetailViewController.receivedCellName = chosenCellName
+            menuDetailViewController.receivedCellPrice = chosenCellPrice
+            menuDetailViewController.receivedCellDescription = chosenCellDescription
+        }
         
-        menuDetailViewController.receivedCellName = chosenCellName
-        menuDetailViewController.receivedCellPrice = chosenCellPrice
-        menuDetailViewController.receivedCellDescription = chosenCellDescription
-        
+    }
+    
+    @IBAction func cartButtonClicked(sender: AnyObject) {
+        self.performSegueWithIdentifier("loadShoppingCart", sender: self)
     }
     
 }

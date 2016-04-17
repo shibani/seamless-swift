@@ -29,6 +29,9 @@ class MenuDetailViewController: UIViewController {
     
     @IBOutlet weak var AddToBag: UIButton!
     
+    var quantity = 0
+    
+    var specialInstructions = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +53,13 @@ class MenuDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func addToBagTouched(sender: UIButton) {
+        print("add to bag clicked")
+        
+        //+1 to shopping cart badge
+        //add to shopping bag element
     }
     
 

@@ -19,4 +19,10 @@ class MenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var menuItemDescription: UILabel?
     
+    
+    var itemName = ""
+    
+    var itemDescription = ""
+    
+    var itemPrice = ""
 }
