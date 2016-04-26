@@ -42,9 +42,15 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    @IBOutlet weak var cartButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //cartButton.FAIcon = FAType.FAGithub
+        
+        //cartButton.tintColor = UIColor.redColor()
         
         self.tableView?.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
         
@@ -221,6 +227,9 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
             // set a variable in the second view controller with the data to pass
             menuViewController.receivedCellIndex = chosenCellIndex
             menuViewController.receivedCellName = chosenCellName
+        }
+        
+        if segue.identifier == "loadShoppingCart" {
         }
     }
     

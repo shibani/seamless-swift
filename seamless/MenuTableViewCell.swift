@@ -10,15 +10,11 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
 
-   
     @IBOutlet weak var menuItemName: UILabel?
 
- 
     @IBOutlet weak var menuItemPrice: UILabel?
-    
 
     @IBOutlet weak var menuItemDescription: UILabel?
-    
     
     var itemName = ""
     

@@ -48,6 +48,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var menuItemView: UITableView!
     
+    @IBOutlet weak var cartButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -197,6 +199,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    //MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -208,6 +211,9 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             menuDetailViewController.receivedCellName = chosenCellName
             menuDetailViewController.receivedCellPrice = chosenCellPrice
             menuDetailViewController.receivedCellDescription = chosenCellDescription
+        }
+        
+        if segue.identifier == "loadShoppingCart" {
         }
         
     }

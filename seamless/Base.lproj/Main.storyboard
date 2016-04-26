@@ -64,11 +64,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Restaurants" id="9Es-d2-RTl">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="GLA-kR-9gQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cs1-6r-PgN">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                        <barButtonItem key="rightBarButtonItem" width="60" style="plain" id="GLA-kR-9gQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Cs1-6r-PgN">
+                                <rect key="frame" x="244" y="7" width="60" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Cart"/>
                                 <connections>
                                     <action selector="cartButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fM-Wn-vJ0"/>
                                 </connections>
@@ -76,6 +76,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cartButton" destination="GLA-kR-9gQ" id="rXl-kM-XdU"/>
                         <outlet property="searchBar" destination="VgU-xQ-K9w" id="06U-tL-xrQ"/>
                         <outlet property="tableView" destination="I4x-1j-OsP" id="S4w-Wf-dZf"/>
                         <segue destination="5lC-wy-OuR" kind="push" identifier="loadMenuView" id="7oG-t7-KVr"/>
@@ -89,7 +90,7 @@
         <!--Cart View Controller-->
         <scene sceneID="4CZ-u3-Qd8">
             <objects>
-                <viewController id="Ioh-Uq-Cq4" customClass="CartViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CartViewController" id="Ioh-Uq-Cq4" customClass="CartViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdU-9d-MmB"/>
                         <viewControllerLayoutGuide type="bottom" id="Wsp-XE-wau"/>
@@ -104,10 +105,52 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vtV-gY-EDT" userLabel="Cart View">
+                                <rect key="frame" x="20" y="149" width="280" height="399"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartViewCell" rowHeight="65" id="ScE-iM-3Rb" customClass="cartViewCell" customModule="seamless" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="280" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ScE-iM-3Rb" id="tHA-Rb-Mq8">
+                                            <rect key="frame" x="0.0" y="0.0" width="280" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19u-Vh-kmw">
+                                                    <rect key="frame" x="17" y="8" width="149" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tN-NF-yVS">
+                                                    <rect key="frame" x="205" y="8" width="57" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QD-YJ-8S7">
+                                                    <rect key="frame" x="17" y="37" width="255" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="desc" destination="5QD-YJ-8S7" id="cGe-zY-l1A"/>
+                                            <outlet property="name" destination="19u-Vh-kmw" id="eg8-QS-CxM"/>
+                                            <outlet property="price" destination="1tN-NF-yVS" id="KML-IH-htB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="R8c-22-enx"/>
+                    <connections>
+                        <outlet property="cartView" destination="vtV-gY-EDT" id="fKB-EM-bVG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSw-gN-cWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -175,7 +218,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OfW-Ix-fx1">
                                 <rect key="frame" x="233" y="7" width="71" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Cart"/>
                                 <connections>
                                     <action selector="cartButtonClicked:" destination="5lC-wy-OuR" eventType="touchUpInside" id="Fao-oB-jKb"/>
                                 </connections>
@@ -183,6 +226,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cartButton" destination="DHC-OO-Non" id="R6B-bL-9bZ"/>
                         <outlet property="menuItemView" destination="FJr-AP-Se0" id="Hc1-nm-1Er"/>
                         <outlet property="restoLabel" destination="Qy8-wC-PtH" id="eBf-4m-klC"/>
                         <segue destination="Efl-mT-Gkd" kind="push" identifier="loadMenuDetailView" id="WLe-JB-Ehq"/>
@@ -196,7 +240,7 @@
         <!--Menu Detail View Controller-->
         <scene sceneID="shj-Te-B3d">
             <objects>
-                <viewController id="Efl-mT-Gkd" customClass="MenuDetailViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuDetailViewController" id="Efl-mT-Gkd" customClass="MenuDetailViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jrk-VX-mZc"/>
                         <viewControllerLayoutGuide type="bottom" id="KDE-3p-3uZ"/>
@@ -245,6 +289,7 @@
                         <outlet property="menuItemDescription" destination="0mH-2X-6Q8" id="CjV-j5-da6"/>
                         <outlet property="menuItemName" destination="SIZ-8N-C2X" id="vWv-7R-UDW"/>
                         <outlet property="menuItemPrice" destination="YZj-vU-MTR" id="QTb-yZ-8op"/>
+                        <segue destination="Ioh-Uq-Cq4" kind="push" identifier="loadShoppingCart" id="RXx-w5-Wsw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wwy-w9-KqB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,6 +316,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HYa-jj-Z76"/>
+        <segue reference="60C-Ke-BIc"/>
     </inferredMetricsTieBreakers>
 </document>

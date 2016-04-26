@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class MenuDetailViewController: UIViewController {
     
     var receivedCellIndex = 0
@@ -17,9 +18,6 @@ class MenuDetailViewController: UIViewController {
     var receivedCellDescription = ""
 
     var receivedCellPrice = ""
-    
-    //var chosenCellIndex = 0
-    //var chosenCellName = ""
 
     @IBOutlet weak var menuItemName: UILabel!
     
@@ -48,6 +46,7 @@ class MenuDetailViewController: UIViewController {
         menuItemDescription.text = "\(receivedCellDescription)"
         
         menuItemPrice.text = "\(receivedCellPrice)"
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,21 +55,19 @@ class MenuDetailViewController: UIViewController {
     }
     
     @IBAction func addToBagTouched(sender: UIButton) {
-        print("add to bag clicked")
+        //print("add to bag clicked")
         
         //+1 to shopping cart badge
         //add to shopping bag element
+        
+        let newItem = CartItem()
+        
+        newItem.name = menuItemName.text!
+        newItem.text = menuItemDescription.text!
+        newItem.price = menuItemPrice.text!
+
+        shoppingCartItemsArray.append(newItem)
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
