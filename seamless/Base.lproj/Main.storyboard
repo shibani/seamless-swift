@@ -65,8 +65,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Restaurants" id="9Es-d2-RTl">
                         <barButtonItem key="rightBarButtonItem" width="60" style="plain" id="GLA-kR-9gQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Cs1-6r-PgN">
-                                <rect key="frame" x="244" y="7" width="60" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Cs1-6r-PgN" customClass="cartButton" customModule="seamless" customModuleProvider="target">
+                                <rect key="frame" x="184" y="7" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cart"/>
                                 <connections>
@@ -215,8 +215,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="dgR-8B-nde">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="DHC-OO-Non">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OfW-Ix-fx1">
-                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OfW-Ix-fx1" customClass="cartButton" customModule="seamless" customModuleProvider="target">
+                                <rect key="frame" x="184" y="7" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cart"/>
                                 <connections>
@@ -316,6 +316,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="60C-Ke-BIc"/>
+        <segue reference="HYa-jj-Z76"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -24,6 +24,7 @@
 		EDE8699A1CC3F3DF0086AD0C /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE869981CC3F3DF0086AD0C /* FAIcon.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699B1CC3F3DF0086AD0C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EDF5F24F1CD0761200A5231E /* cartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF5F24E1CD0761200A5231E /* cartButton.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		EDE869981CC3F3DF0086AD0C /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
 		EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		EDF5F24E1CD0761200A5231E /* cartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */,
+				EDF5F24E1CD0761200A5231E /* cartButton.swift */,
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
 				EDE869981CC3F3DF0086AD0C /* FAIcon.swift */,
 				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
@@ -173,6 +176,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDE8699A1CC3F3DF0086AD0C /* FAIcon.swift in Sources */,
+				EDF5F24F1CD0761200A5231E /* cartButton.swift in Sources */,
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
