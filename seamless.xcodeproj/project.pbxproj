@@ -10,6 +10,7 @@
 		ED1FEBB91CCEF4860085C49C /* cartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2C41D21CC5D0FB007551DB /* cartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C41D11CC5D0FB007551DB /* cartItem.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		ED3302401CD1B461003A34F1 /* ENMBadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED33023F1CD1B461003A34F1 /* ENMBadgedBarButtonItem.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
 		ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -31,6 +32,7 @@
 		ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartViewCell.swift; sourceTree = "<group>"; };
 		ED2C41D11CC5D0FB007551DB /* cartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		ED33023F1CD1B461003A34F1 /* ENMBadgedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENMBadgedBarButtonItem.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		ED8E62641C61626400C8174C /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
@@ -83,18 +85,19 @@
 			isa = PBXGroup;
 			children = (
 				EDE869991CC3F3DF0086AD0C /* FontAwesome.ttf */,
-				EDF5F24E1CD0761200A5231E /* cartButton.swift */,
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
 				EDE869981CC3F3DF0086AD0C /* FAIcon.swift */,
 				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
+				ED33023F1CD1B461003A34F1 /* ENMBadgedBarButtonItem.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
 				ED9133831C31B319009AD4AD /* ViewController.swift */,
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
 				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
-				ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
+				EDF5F24E1CD0761200A5231E /* cartButton.swift */,
+				ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */,
 				EDE8699E1CC3F5710086AD0C /* CartViewController.swift */,
 				ED2C41D11CC5D0FB007551DB /* cartItem.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
@@ -177,6 +180,7 @@
 			files = (
 				EDE8699A1CC3F3DF0086AD0C /* FAIcon.swift in Sources */,
 				EDF5F24F1CD0761200A5231E /* cartButton.swift in Sources */,
+				ED3302401CD1B461003A34F1 /* ENMBadgedBarButtonItem.swift in Sources */,
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,

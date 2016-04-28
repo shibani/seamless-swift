@@ -68,6 +68,19 @@ class MenuDetailViewController: UIViewController {
 
         shoppingCartItemsArray.append(newItem)
         
+        let aString = menuItemPrice.text!
+        let replaced = String(aString.characters.map {
+            $0 == "$" ? " " : $0
+            })
+        
+        let replaceTrimmed = replaced.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        )
+        
+        let itemPrice = Double(replaceTrimmed)
+        
+        CartViewController().totalAmt = CartViewController().totalAmt + (itemPrice)!
+        
     }
     
 }

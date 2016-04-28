@@ -48,10 +48,6 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         super.viewDidLoad()
         
-        //cartButton.FAIcon = FAType.FAGithub
-        
-        //cartButton.tintColor = UIColor.redColor()
-        
         self.tableView?.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
         
         searchBar.delegate = self

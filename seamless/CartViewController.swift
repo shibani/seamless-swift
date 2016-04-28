@@ -14,15 +14,20 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var cartView: UITableView!
     
+    @IBOutlet weak var cartTotalLabel: UILabel!
+    
+    var totalAmt:Double = 0.00
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
         cartView.dataSource = self
         cartView.delegate = self
         
+        cartTotalLabel.text = String(format: "\u{00a0}\u{00a0}$ %.2f", totalAmt)
+
         self.cartView.reloadData()
     }
-    
     
     func tableView(cartView: UITableView, numberOfRowsInSection section: Int) -> Int{
         

@@ -11,8 +11,8 @@ import UIKit
 
 class cartButton: UIButton {
     
-    var price_string:String = "\u{00a0}\u{00a0}\u{00a0}\u{00a0}$0.00"
-    
+    var price_string:String = String(format: "\u{00a0}\u{00a0}$ %.2f", CartViewController().totalAmt)
+        
     required init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)!
