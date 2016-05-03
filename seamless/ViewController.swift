@@ -38,12 +38,14 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     
     var isLoadingRestaurants = false
     
+    //var cartLabel : UILabel?
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    @IBOutlet weak var cartButton: UIBarButtonItem!
-    
+    @IBOutlet weak var cartButton: UIButton!
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -72,17 +74,23 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         }
         
         tableView?.dataSource = self
-        
         tableView?.delegate = self
-        
+
         //var str = "search=455 Graham Ave, Brooklyn, NY 11222"
         //let latlongstr = "latitude=40.759211&longitude=-73.984638"
         //self.loadFirstRestos(escapedString(str))
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        updateCartButton()
     }
     
     func escapedString(str: String) -> String{
@@ -105,6 +113,7 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
     func refreshUI() {
         dispatch_async(dispatch_get_main_queue(),{
             self.tableView!.reloadData()
+        
         });
     }
     
@@ -229,8 +238,14 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         }
     }
     
+    func updateCartButton(){
+        cartButton?.setTitle(Helper.totalAmtText(), forState: .Normal)
+        cartButton?.setImage(UIImage(named: "cart.png"), forState: .Normal)
+        //print("VCcartButtonLoaded!")
+    }
+    
     @IBAction func cartButtonClicked(sender: AnyObject) {
-        
         self.performSegueWithIdentifier("loadShoppingCart", sender: self)
     }
+
 }

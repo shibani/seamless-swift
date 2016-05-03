@@ -48,7 +48,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var menuItemView: UITableView!
     
-    @IBOutlet weak var cartButton: UIBarButtonItem!
+    @IBOutlet weak var cartButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +74,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         menuItemView.dataSource = self
-        
         menuItemView.delegate = self
+        
+        
+    
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated);
+        
+        updateCartButton()
         
     }
 
@@ -83,6 +91,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
     // MARK: - Parse JSON
     
@@ -212,14 +221,18 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             menuDetailViewController.receivedCellPrice = chosenCellPrice
             menuDetailViewController.receivedCellDescription = chosenCellDescription
         }
-        
-        if segue.identifier == "loadShoppingCart" {
-        }
-        
+    }
+    
+    func updateCartButton(){
+        cartButton?.setTitle(Helper.totalAmtText(), forState: .Normal)
+        cartButton?.setImage(UIImage(named: "cart.png"), forState: .Normal)
+        //print("MVCcartButtonLoaded!")
     }
     
     @IBAction func cartButtonClicked(sender: AnyObject) {
+        
         self.performSegueWithIdentifier("loadShoppingCart", sender: self)
+        
     }
     
 }

@@ -16,16 +16,14 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var cartTotalLabel: UILabel!
     
-    var totalAmt:Double = 0.00
-    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
     
         cartView.dataSource = self
         cartView.delegate = self
         
         cartTotalLabel.text = String(format: "\u{00a0}\u{00a0}$ %.2f", totalAmt)
-
         self.cartView.reloadData()
     }
     
@@ -34,10 +32,9 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return shoppingCartItemsArray.count
     }
     
-    
     func tableView(cartView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! cartViewCell
+        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! CartViewCell
         
         cell.name.text = shoppingCartItemsArray[indexPath.row].name
         cell.price.text = shoppingCartItemsArray[indexPath.row].price

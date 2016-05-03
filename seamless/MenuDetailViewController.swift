@@ -27,9 +27,9 @@ class MenuDetailViewController: UIViewController {
     
     @IBOutlet weak var AddToBag: UIButton!
     
-    var quantity = 0
+    //var quantity = 0
     
-    var specialInstructions = ""
+    //var specialInstructions = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,7 @@ class MenuDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
     @IBAction func addToBagTouched(sender: UIButton) {
         //print("add to bag clicked")
         
@@ -68,8 +69,8 @@ class MenuDetailViewController: UIViewController {
 
         shoppingCartItemsArray.append(newItem)
         
-        let aString = menuItemPrice.text!
-        let replaced = String(aString.characters.map {
+        let aString = menuItemPrice.text
+        let replaced = String(aString!.characters.map {
             $0 == "$" ? " " : $0
             })
         
@@ -78,9 +79,13 @@ class MenuDetailViewController: UIViewController {
         )
         
         let itemPrice = Double(replaceTrimmed)
+        totalAmt = (itemPrice!)
         
-        CartViewController().totalAmt = CartViewController().totalAmt + (itemPrice)!
+        print("itemprice: \(itemPrice!)")
+        print("totalamt: \(totalAmt)")
         
+        ViewController().updateCartButton()
+        MenuViewController().updateCartButton()
     }
-    
+
 }

@@ -64,19 +64,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Restaurants" id="9Es-d2-RTl">
-                        <barButtonItem key="rightBarButtonItem" width="60" style="plain" id="GLA-kR-9gQ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" id="Cs1-6r-PgN" customClass="cartButton" customModule="seamless" customModuleProvider="target">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ubk-4B-mxO">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Eg-vW-nqJ">
                                 <rect key="frame" x="184" y="7" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cart"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="cartButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fM-Wn-vJ0"/>
+                                    <action selector="cartButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ODm-Zv-STK"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cartButton" destination="GLA-kR-9gQ" id="rXl-kM-XdU"/>
+                        <outlet property="cartButton" destination="9Eg-vW-nqJ" id="RpR-8M-Nf7"/>
                         <outlet property="searchBar" destination="VgU-xQ-K9w" id="06U-tL-xrQ"/>
                         <outlet property="tableView" destination="I4x-1j-OsP" id="S4w-Wf-dZf"/>
                         <segue destination="5lC-wy-OuR" kind="push" identifier="loadMenuView" id="7oG-t7-KVr"/>
@@ -85,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="721" y="81"/>
+            <point key="canvasLocation" x="713" y="75"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="4CZ-u3-Qd8">
@@ -109,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="149" width="320" height="353"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartViewCell" rowHeight="65" id="ScE-iM-3Rb" customClass="cartViewCell" customModule="seamless" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartViewCell" rowHeight="65" id="ScE-iM-3Rb" customClass="CartViewCell" customModule="seamless" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ScE-iM-3Rb" id="tHA-Rb-Mq8">
@@ -119,27 +121,27 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19u-Vh-kmw">
                                                     <rect key="frame" x="17" y="8" width="149" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tN-NF-yVS">
                                                     <rect key="frame" x="205" y="8" width="57" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QD-YJ-8S7">
                                                     <rect key="frame" x="17" y="37" width="255" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="desc" destination="5QD-YJ-8S7" id="cGe-zY-l1A"/>
-                                            <outlet property="name" destination="19u-Vh-kmw" id="eg8-QS-CxM"/>
-                                            <outlet property="price" destination="1tN-NF-yVS" id="KML-IH-htB"/>
+                                            <outlet property="desc" destination="5QD-YJ-8S7" id="IU2-4B-YEf"/>
+                                            <outlet property="name" destination="19u-Vh-kmw" id="i6v-bX-2q1"/>
+                                            <outlet property="price" destination="1tN-NF-yVS" id="W5t-8R-Fca"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -147,13 +149,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVg-lt-83f">
                                 <rect key="frame" x="190" y="520" width="91" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QdX-kh-47G">
                                 <rect key="frame" x="54" y="520" width="86" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -227,19 +229,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dgR-8B-nde">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="DHC-OO-Non">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OfW-Ix-fx1" customClass="cartButton" customModule="seamless" customModuleProvider="target">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ShJ-YY-mwN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rTW-Ps-RnY">
                                 <rect key="frame" x="184" y="7" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cart"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
-                                    <action selector="cartButtonClicked:" destination="5lC-wy-OuR" eventType="touchUpInside" id="Fao-oB-jKb"/>
+                                    <action selector="cartButtonClicked:" destination="5lC-wy-OuR" eventType="touchUpInside" id="RED-Jd-3eH"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cartButton" destination="DHC-OO-Non" id="R6B-bL-9bZ"/>
+                        <outlet property="cartButton" destination="rTW-Ps-RnY" id="GFU-m3-j1f"/>
                         <outlet property="menuItemView" destination="FJr-AP-Se0" id="Hc1-nm-1Er"/>
                         <outlet property="restoLabel" destination="Qy8-wC-PtH" id="eBf-4m-klC"/>
                         <segue destination="Efl-mT-Gkd" kind="push" identifier="loadMenuDetailView" id="WLe-JB-Ehq"/>
@@ -329,6 +333,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HYa-jj-Z76"/>
+        <segue reference="60C-Ke-BIc"/>
     </inferredMetricsTieBreakers>
 </document>
