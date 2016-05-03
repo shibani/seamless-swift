@@ -111,7 +111,7 @@
                                 <rect key="frame" x="0.0" y="149" width="320" height="353"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartViewCell" rowHeight="65" id="ScE-iM-3Rb" customClass="CartViewCell" customModule="seamless" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cartViewCell" rowHeight="65" id="ScE-iM-3Rb" customClass="cartViewCell" customModule="seamless" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ScE-iM-3Rb" id="tHA-Rb-Mq8">
@@ -139,9 +139,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="desc" destination="5QD-YJ-8S7" id="IU2-4B-YEf"/>
-                                            <outlet property="name" destination="19u-Vh-kmw" id="i6v-bX-2q1"/>
-                                            <outlet property="price" destination="1tN-NF-yVS" id="W5t-8R-Fca"/>
+                                            <outlet property="desc" destination="tHA-Rb-Mq8" id="o52-Vd-mP6"/>
+                                            <outlet property="name" destination="tHA-Rb-Mq8" id="ioc-cl-KUl"/>
+                                            <outlet property="price" destination="tHA-Rb-Mq8" id="jD7-db-Dst"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1FEBB91CCEF4860085C49C /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FEBB81CCEF4860085C49C /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		ED1FEBB91CCEF4860085C49C /* cartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2C41D21CC5D0FB007551DB /* cartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C41D11CC5D0FB007551DB /* cartItem.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED1FEBB81CCEF4860085C49C /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewCell.swift; sourceTree = "<group>"; };
+		ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartViewCell.swift; sourceTree = "<group>"; };
 		ED2C41D11CC5D0FB007551DB /* cartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -89,7 +89,7 @@
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
 				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
-				ED1FEBB81CCEF4860085C49C /* CartViewCell.swift */,
+				ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */,
 				EDE8699E1CC3F5710086AD0C /* CartViewController.swift */,
 				ED2C41D11CC5D0FB007551DB /* cartItem.swift */,
 				ED7EA90B1CD824EA00DC1E57 /* Helper.swift */,
@@ -182,7 +182,7 @@
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
-				ED1FEBB91CCEF4860085C49C /* CartViewCell.swift in Sources */,
+				ED1FEBB91CCEF4860085C49C /* cartViewCell.swift in Sources */,
 				ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
