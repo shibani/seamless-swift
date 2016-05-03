@@ -34,7 +34,7 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(cartView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! CartViewCell
+        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! cartViewCell
         
         cell.name.text = shoppingCartItemsArray[indexPath.row].name
         cell.price.text = shoppingCartItemsArray[indexPath.row].price

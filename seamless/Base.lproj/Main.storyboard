@@ -139,9 +139,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="desc" destination="tHA-Rb-Mq8" id="o52-Vd-mP6"/>
-                                            <outlet property="name" destination="tHA-Rb-Mq8" id="ioc-cl-KUl"/>
-                                            <outlet property="price" destination="tHA-Rb-Mq8" id="jD7-db-Dst"/>
+                                            <outlet property="desc" destination="tHA-Rb-Mq8" id="wDa-Sh-kKP"/>
+                                            <outlet property="name" destination="tHA-Rb-Mq8" id="U4Q-Ln-iop"/>
+                                            <outlet property="price" destination="tHA-Rb-Mq8" id="dnj-HM-Tym"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
