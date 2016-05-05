@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		ED1FEBB91CCEF4860085C49C /* cartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		ED2C41D21CC5D0FB007551DB /* cartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C41D11CC5D0FB007551DB /* cartItem.swift */; settings = {ASSET_TAGS = (); }; };
+		ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C41D11CC5D0FB007551DB /* CartItem.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
@@ -24,11 +23,11 @@
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EDFD43C11CDAE84300307508 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD43C01CDAE84300307508 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartViewCell.swift; sourceTree = "<group>"; };
-		ED2C41D11CC5D0FB007551DB /* cartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cartItem.swift; sourceTree = "<group>"; };
+		ED2C41D11CC5D0FB007551DB /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED7EA90B1CD824EA00DC1E57 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = ../TopAlignedLabel.swift; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		EDFD43C01CDAE84300307508 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewCell.swift; path = ../CartViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +89,9 @@
 				ED2D89901C387D040090C10C /* MenuViewController.swift */,
 				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
-				ED1FEBB81CCEF4860085C49C /* cartViewCell.swift */,
 				EDE8699E1CC3F5710086AD0C /* CartViewController.swift */,
-				ED2C41D11CC5D0FB007551DB /* cartItem.swift */,
+				EDFD43C01CDAE84300307508 /* CartViewCell.swift */,
+				ED2C41D11CC5D0FB007551DB /* CartItem.swift */,
 				ED7EA90B1CD824EA00DC1E57 /* Helper.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				EDA5F9FA1CD6696C0064F019 /* cart.png */,
@@ -175,14 +175,14 @@
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
-				ED2C41D21CC5D0FB007551DB /* cartItem.swift in Sources */,
+				ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
-				ED1FEBB91CCEF4860085C49C /* cartViewCell.swift in Sources */,
+				EDFD43C11CDAE84300307508 /* CartViewCell.swift in Sources */,
 				ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

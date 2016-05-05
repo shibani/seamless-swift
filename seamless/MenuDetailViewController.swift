@@ -64,7 +64,7 @@ class MenuDetailViewController: UIViewController {
         let newItem = CartItem()
         
         newItem.name = menuItemName.text!
-        newItem.text = menuItemDescription.text!
+        newItem.desc = menuItemDescription.text!
         newItem.price = menuItemPrice.text!
 
         shoppingCartItemsArray.append(newItem)
@@ -79,13 +79,15 @@ class MenuDetailViewController: UIViewController {
         )
         
         let itemPrice = Double(replaceTrimmed)
-        totalAmt = (itemPrice!)
+        totalAmt += (itemPrice!)
         
         print("itemprice: \(itemPrice!)")
         print("totalamt: \(totalAmt)")
         
         ViewController().updateCartButton()
         MenuViewController().updateCartButton()
+        
+        navigationController!.popViewControllerAnimated(true)
     }
 
 }

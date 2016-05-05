@@ -1,19 +1,21 @@
 //
-//  cartViewCell.swift
+//  CartViewCell.swift
 //  seamless
 //
-//  Created by Shibani Mookerjee on 4/25/16.
+//  Created by Shibani Mookerjee on 5/4/16.
 //  Copyright © 2016 Shibani Mookerjee. All rights reserved.
 //
 
 import UIKit
 
-class cartViewCell: UITableViewCell {
+class CartViewCell: UITableViewCell {
+    
     
     @IBOutlet weak var name: UILabel!
-
+    
     @IBOutlet weak var price: UILabel!
     
     @IBOutlet weak var desc: UILabel!
-  
+    
+    
 }

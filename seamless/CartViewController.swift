@@ -23,7 +23,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cartView.dataSource = self
         cartView.delegate = self
         
-        cartTotalLabel.text = String(format: "\u{00a0}\u{00a0}$ %.2f", totalAmt)
+        cartTotalLabel.text = Helper.totalAmtText()
+        
         self.cartView.reloadData()
     }
     
@@ -34,14 +35,14 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(cartView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! cartViewCell
+        let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! CartViewCell
         
-        cell.name.text = shoppingCartItemsArray[indexPath.row].name
-        cell.price.text = shoppingCartItemsArray[indexPath.row].price
-        cell.desc.text = shoppingCartItemsArray[indexPath.row].text
+        //cell.name?.text = shoppingCartItemsArray[indexPath.row].name
+        //cell.price?.text = shoppingCartItemsArray[indexPath.row].price
+        //cell.desc?.text = shoppingCartItemsArray[indexPath.row].desc
         
-        //cell.textLabel?.text = shoppingCartItemsArray[indexPath.row].name
-        //cell.detailTextLabel?.text = shoppingCartItemsArray[indexPath.row].text
+        cell.textLabel?.text = shoppingCartItemsArray[indexPath.row].name
+        cell.detailTextLabel?.text = shoppingCartItemsArray[indexPath.row].desc
         return cell
     }
 }
