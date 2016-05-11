@@ -12,8 +12,14 @@ class CartItem: NSObject {
     
     var name: String = ""
     
-    var text: String = ""
+    var desc: String = ""
     
     var price: String = ""
+    
+    var qty: String = ""
+    
+    var total:String = ""
+    
+    var restaurant:String = ""
 
 }

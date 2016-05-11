@@ -220,6 +220,8 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
             menuDetailViewController.receivedCellName = chosenCellName
             menuDetailViewController.receivedCellPrice = chosenCellPrice
             menuDetailViewController.receivedCellDescription = chosenCellDescription
+            
+            menuDetailViewController.receivedResto = receivedCellName
         }
     }
     
