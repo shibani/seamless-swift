@@ -16,6 +16,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var cartTotalLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -26,6 +28,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cartTotalLabel.text = Helper.totalAmtText()
         
         self.cartView.reloadData()
+        
+        self.titleLabel.text = "Your Order: " + shoppingCartItemsArray[0].restaurant
     }
     
     func tableView(cartView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -37,10 +41,21 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = cartView.dequeueReusableCellWithIdentifier("cartViewCell", forIndexPath: indexPath) as! CartViewCell
         
+        let price = Helper.menuItemPriceDouble(shoppingCartItemsArray[indexPath.row].price)
+        let qty = Double(shoppingCartItemsArray[indexPath.row].qty)
+        
         cell.name?.text = shoppingCartItemsArray[indexPath.row].name
-        cell.price?.text = shoppingCartItemsArray[indexPath.row].price
         cell.desc?.text = shoppingCartItemsArray[indexPath.row].desc
         cell.qty?.text = shoppingCartItemsArray[indexPath.row].qty
+        
+        let itemTotal = Double(price * qty!)
+        
+        cell.itemTotalPrice?.text = String(format: "$ %.2f", itemTotal)
+        if(qty > 1.0){
+            cell.price?.text = String(format: "$ %.2f ea.", price)
+        } else {
+            cell.price?.text = ""
+        }
         
         //cell.textLabel?.text = shoppingCartItemsArray[indexPath.row].name
         //cell.detailTextLabel?.text = shoppingCartItemsArray[indexPath.row].desc

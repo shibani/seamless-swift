@@ -145,7 +145,7 @@ class MenuDetailViewController: UIViewController {
     @IBAction func showAlertButtonTapped(sender: UIButton) {
         
         // create the alert
-        let alert = UIAlertController(title: "UIAlertController", message: "Would you like to continue learning how to use iOS alerts?", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "UIAlertController", message: "Items from another restaurant are already in your cart. Would you like to empty your cart for " + (shoppingCartItemsArray.first?.restaurant)! + " and continue?", preferredStyle: UIAlertControllerStyle.Alert)
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: "Continue", style: UIAlertActionStyle.Default, handler: nil))

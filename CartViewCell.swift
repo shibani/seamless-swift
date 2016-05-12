@@ -18,4 +18,5 @@ class CartViewCell: UITableViewCell {
     
     @IBOutlet weak var qty: UILabel!
     
+    @IBOutlet weak var itemTotalPrice: UILabel!
 }
