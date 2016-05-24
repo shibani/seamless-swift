@@ -171,6 +171,9 @@
                                 <state key="normal" title="Continue to Checkout: ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="checkOutBtnClicked:" destination="Ioh-Uq-Cq4" eventType="touchUpInside" id="ABl-DT-Yi0"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Order" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5R-wS-vVt">
                                 <rect key="frame" x="12" y="85" width="299" height="21"/>
@@ -185,12 +188,14 @@
                     <connections>
                         <outlet property="cartTotalLabel" destination="NVg-lt-83f" id="Wjb-kb-TzH"/>
                         <outlet property="cartView" destination="vtV-gY-EDT" id="fKB-EM-bVG"/>
+                        <outlet property="checkOutBtn" destination="ylV-I9-7iW" id="ED8-RF-hx8"/>
                         <outlet property="titleLabel" destination="K5R-wS-vVt" id="bxr-70-mBW"/>
+                        <segue destination="Jzp-P1-lnY" kind="push" identifier="loadUserView" id="rYG-kk-H1L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WSw-gN-cWv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1093" y="-581"/>
+            <point key="canvasLocation" x="1101" y="-609"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Vru-cb-nAA">
@@ -384,6 +389,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="163-fN-glm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="334" y="81"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="HO0-u7-lfM">
+            <objects>
+                <viewController id="Jzp-P1-lnY" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kRl-xJ-lzS"/>
+                        <viewControllerLayoutGuide type="bottom" id="kKk-u4-fsx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lJd-Ih-0SN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Users" id="Fka-Pn-dt5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QRr-Fn-TNT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="713" y="711"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

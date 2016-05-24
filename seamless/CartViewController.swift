@@ -18,6 +18,8 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var checkOutBtn: UIButton!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -60,5 +62,10 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //cell.textLabel?.text = shoppingCartItemsArray[indexPath.row].name
         //cell.detailTextLabel?.text = shoppingCartItemsArray[indexPath.row].desc
         return cell
+    }
+    
+    @IBAction func checkOutBtnClicked(sender: AnyObject) {
+        
+        self.performSegueWithIdentifier("loadUserView", sender: self)
     }
 }
