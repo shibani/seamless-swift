@@ -11,6 +11,8 @@
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* ViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
+		ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD411CF3ED04002B3324 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EA90B1CD824EA00DC1E57 /* Helper.swift */; settings = {ASSET_TAGS = (); }; };
 		ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E62641C61626400C8174C /* OneShotLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -21,15 +23,28 @@
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
 		EDA5F9FB1CD6696C0064F019 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA5F9FA1CD6696C0064F019 /* cart.png */; settings = {ASSET_TAGS = (); }; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EDFD43C11CDAE84300307508 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDFD43C01CDAE84300307508 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ED62FD761CF3F22E002B3324 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		ED2C41D11CC5D0FB007551DB /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
+		ED62FD411CF3ED04002B3324 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewCell.swift; sourceTree = "<group>"; };
 		ED7EA90B1CD824EA00DC1E57 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		ED8E62641C61626400C8174C /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
@@ -43,9 +58,7 @@
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA5F9FA1CD6696C0064F019 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cart.png; path = Assets.xcassets/cart.png; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
-		EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TopAlignedLabel.swift; path = ../TopAlignedLabel.swift; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
-		EDFD43C01CDAE84300307508 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CartViewCell.swift; path = ../CartViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
-				EDCE2C0D1C6A6CC300DBD1E2 /* TopAlignedLabel.swift */,
+				ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
@@ -90,7 +103,7 @@
 				ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */,
 				EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */,
 				EDE8699E1CC3F5710086AD0C /* CartViewController.swift */,
-				EDFD43C01CDAE84300307508 /* CartViewCell.swift */,
+				ED62FD411CF3ED04002B3324 /* CartViewCell.swift */,
 				ED2C41D11CC5D0FB007551DB /* CartItem.swift */,
 				ED7EA90B1CD824EA00DC1E57 /* Helper.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
@@ -111,6 +124,7 @@
 				ED91337A1C31B319009AD4AD /* Sources */,
 				ED91337B1C31B319009AD4AD /* Frameworks */,
 				ED91337C1C31B319009AD4AD /* Resources */,
+				ED62FD761CF3F22E002B3324 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,15 +188,15 @@
 			files = (
 				EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */,
 				EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */,
+				ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */,
+				ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
 				ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
-				EDCE2C0E1C6A6CC300DBD1E2 /* TopAlignedLabel.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
-				EDFD43C11CDAE84300307508 /* CartViewCell.swift in Sources */,
 				ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +308,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = seamless/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindred.seamless;
@@ -305,6 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = seamless/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindred.seamless;
