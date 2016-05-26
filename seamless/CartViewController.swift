@@ -31,7 +31,11 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.cartView.reloadData()
         
-        self.titleLabel.text = "Your Order: " + shoppingCartItemsArray[0].restaurant
+        if(shoppingCartItemsArray.count > 0){
+            self.titleLabel.text = "Your Order: " + shoppingCartItemsArray[0].restaurant
+        } else {
+            self.titleLabel.text = "Your Order: cart is empty"
+        }
     }
     
     func tableView(cartView: UITableView, numberOfRowsInSection section: Int) -> Int{

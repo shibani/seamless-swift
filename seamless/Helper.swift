@@ -6,6 +6,7 @@
 //  Copyright © 2016 Shibani Mookerjee. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 var totalAmt:Double = 0.00

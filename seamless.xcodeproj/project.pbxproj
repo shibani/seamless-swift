@@ -24,6 +24,7 @@
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
 		EDA5F9FB1CD6696C0064F019 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA5F9FA1CD6696C0064F019 /* cart.png */; settings = {ASSET_TAGS = (); }; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EDCC6BE81CF53C970045F6E2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCC6BE71CF53C970045F6E2 /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA5F9FA1CD6696C0064F019 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cart.png; path = Assets.xcassets/cart.png; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
+		EDCC6BE71CF53C970045F6E2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +111,7 @@
 				ED2C41D11CC5D0FB007551DB /* CartItem.swift */,
 				ED7EA90B1CD824EA00DC1E57 /* Helper.swift */,
 				ED90536D1CF3F8C800C5513F /* UserViewController.swift */,
+				EDCC6BE71CF53C970045F6E2 /* User.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				EDA5F9FA1CD6696C0064F019 /* cart.png */,
 				ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */,
@@ -195,6 +198,7 @@
 				ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */,
 				ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* ViewController.swift in Sources */,
+				EDCC6BE81CF53C970045F6E2 /* User.swift in Sources */,
 				ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
