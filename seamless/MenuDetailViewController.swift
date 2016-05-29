@@ -121,7 +121,7 @@ class MenuDetailViewController: UIViewController {
                 print("itemprice: \(itemPrice)")
                 print("totalamt: \(totalAmt)")
                 
-                ViewController().updateCartButton()
+                RestoViewController().updateCartButton()
                 MenuViewController().updateCartButton()
                 
                 navigationController!.popViewControllerAnimated(true)
@@ -135,7 +135,7 @@ class MenuDetailViewController: UIViewController {
             print("itemprice: \(itemPrice)")
             print("totalamt: \(totalAmt)")
             
-            ViewController().updateCartButton()
+            RestoViewController().updateCartButton()
             MenuViewController().updateCartButton()
             
             navigationController!.popViewControllerAnimated(true)

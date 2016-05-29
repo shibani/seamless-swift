@@ -19,8 +19,6 @@ class UserViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var lastName: UITextField!
     
-    @IBOutlet weak var emailField: UITextField!
-    
     @IBOutlet weak var addressField: UITextField!
     
     @IBOutlet weak var aptField: UITextField!
@@ -43,7 +41,6 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         
         self.firstName.delegate = self;
         self.lastName.delegate = self;
-        self.emailField.delegate = self;
         self.addressField.delegate = self;
         self.aptField.delegate = self;
         self.cityField.delegate = self;
@@ -70,7 +67,6 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         
         let firstname = self.firstName.text
         let lastname = self.lastName.text
-        let email = self.emailField.text
         let address = self.addressField.text
         let apt = self.aptField.text
         let city = self.cityField.text
@@ -79,7 +75,6 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         let phone = self.phoneField.text
         let instructions = self.deliveryInstructions.text
         let placeType = self.placeLabel.text
-        let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         
         // Validate the text fields
         if firstname!.characters.count < 2 {
@@ -90,11 +85,6 @@ class UserViewController: UIViewController, UITextFieldDelegate {
         if lastname!.characters.count < 2 {
             valid = false
             invalidFields += ", Last name"
-        }
-        
-        if finalEmail.characters.count < 8 {
-            valid = false
-            invalidFields += ", Email"
         }
         
         if address!.characters.count < 8 {

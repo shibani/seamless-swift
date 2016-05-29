@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, UITableViewDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
+class RestoViewController: UIViewController, UITableViewDataSource, CLLocationManagerDelegate, UITableViewDelegate, NSURLConnectionDataDelegate, UISearchBarDelegate {
     
     //DONE - load a location based resto set dynamically
     //DONE - reload tableView on search bar submit
@@ -75,6 +75,8 @@ class ViewController: UIViewController, UITableViewDataSource, CLLocationManager
         
         tableView?.dataSource = self
         tableView?.delegate = self
+        
+        self.navigationItem.hidesBackButton = true
 
         //var str = "search=455 Graham Ave, Brooklyn, NY 11222"
         //let latlongstr = "latitude=40.759211&longitude=-73.984638"
