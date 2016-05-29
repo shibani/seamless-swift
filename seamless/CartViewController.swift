@@ -12,6 +12,8 @@ var shoppingCartItemsArray:[CartItem] = []
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var newTotal:Double = 0.0
+    
     @IBOutlet weak var cartView: UITableView!
     
     @IBOutlet weak var cartTotalLabel: UILabel!
@@ -66,6 +68,22 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //cell.textLabel?.text = shoppingCartItemsArray[indexPath.row].name
         //cell.detailTextLabel?.text = shoppingCartItemsArray[indexPath.row].desc
         return cell
+    }
+    
+    func tableView(cartView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            shoppingCartItemsArray.removeAtIndex(indexPath.row)
+            cartView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            cartView.reloadData()
+            
+            for item in shoppingCartItemsArray{
+                let price = Helper.menuItemPriceDouble(item.price)
+                let qty = Double(item.qty)
+                newTotal += Double(price * qty!)
+            }
+            //update total price
+            cartTotalLabel.text = String(format: "$ %.2f", newTotal)
+        }
     }
     
     @IBAction func checkOutBtnClicked(sender: AnyObject) {

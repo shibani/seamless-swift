@@ -13,6 +13,10 @@ var totalAmt:Double = 0.00
 
 class Helper{
     
+    static func dblToFormattedPrice(double: Double) -> String{
+        return String(format: "\u{00a0}\u{00a0}$ %.2f", double)
+    }
+    
     static func totalAmtText() -> String {
         return String(format: "\u{00a0}\u{00a0}$ %.2f", totalAmt)
     }

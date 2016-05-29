@@ -20,6 +20,8 @@ class MenuDetailViewController: UIViewController {
     var receivedCellPrice = ""
     
     var receivedResto = ""
+    
+    var cartTotal:Double = 0.0
 
     @IBOutlet weak var menuItemName: UILabel!
     
@@ -115,10 +117,13 @@ class MenuDetailViewController: UIViewController {
                 
                 shoppingCartItemsArray.append(newItem)
                 
-                let itemPrice = Helper.menuItemPriceDouble(menuItemTotal.text!)
-                totalAmt += (itemPrice)
+                totalAmt = 0.0
+                for item in shoppingCartItemsArray{
+                    let price = Helper.menuItemPriceDouble(item.price)
+                    let qty = Double(item.qty)
+                    totalAmt += Double(price * qty!)
+                }
                 
-                print("itemprice: \(itemPrice)")
                 print("totalamt: \(totalAmt)")
                 
                 RestoViewController().updateCartButton()
@@ -129,10 +134,13 @@ class MenuDetailViewController: UIViewController {
         } else {
             shoppingCartItemsArray.append(newItem)
             
-            let itemPrice = Helper.menuItemPriceDouble(menuItemTotal.text!)
-            totalAmt += (itemPrice)
+            totalAmt = 0.0
+            for item in shoppingCartItemsArray{
+                let price = Helper.menuItemPriceDouble(item.price)
+                let qty = Double(item.qty)
+                totalAmt += Double(price * qty!)
+            }
             
-            print("itemprice: \(itemPrice)")
             print("totalamt: \(totalAmt)")
             
             RestoViewController().updateCartButton()

@@ -226,7 +226,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func updateCartButton(){
-        cartButton?.setTitle(Helper.totalAmtText(), forState: .Normal)
+        
+        var cartTotal = 0.0
+        
+        for item in shoppingCartItemsArray{
+            let price = Helper.menuItemPriceDouble(item.price)
+            let qty = Double(item.qty)
+            cartTotal += Double(price * qty!)
+        }
+        
+        cartButton?.setTitle(Helper.dblToFormattedPrice(cartTotal), forState: .Normal)
         cartButton?.setImage(UIImage(named: "cart.png"), forState: .Normal)
         //print("MVCcartButtonLoaded!")
     }
