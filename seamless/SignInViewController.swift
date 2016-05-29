@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var username: UITextField!
 
@@ -22,6 +22,19 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
+        
+        //username.text = "Enter username"
+        username.placeholder = "Enter username"
+        username.textColor = UIColor.lightGrayColor()
+        username.font = UIFont.italicSystemFontOfSize(13)
+        username.delegate = self
+        
+        //password.text = "Enter password"
+        password.placeholder = "Enter password"
+        password.secureTextEntry = true
+        password.textColor = UIColor.lightGrayColor()
+        password.font = UIFont.italicSystemFontOfSize(13)
+        password.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,6 +50,24 @@ class SignInViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField){
+        textField.textColor = UIColor.blackColor()
+        textField.font = UIFont.systemFontOfSize(13)
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField){
+        if textField.text!.isEmpty {
+            //textField.text = "Enter username"
+            textField.textColor = UIColor.lightGrayColor()
+            textField.font = UIFont.italicSystemFontOfSize(13)
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     @IBAction func signInBtnClicked(sender: AnyObject) {

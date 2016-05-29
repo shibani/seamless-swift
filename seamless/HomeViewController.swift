@@ -8,7 +8,7 @@
 
 import UIKit
 
-var isLoggedIn:Int = 1
+var isLoggedIn:Int = 0
 
 class HomeViewController: UIViewController {
     
