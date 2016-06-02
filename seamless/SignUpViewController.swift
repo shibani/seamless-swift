@@ -32,6 +32,12 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         password.font = UIFont.italicSystemFontOfSize(13)
         password.delegate = self
         
+        /*confirmPassword.placeholder = "Confirm password"
+        confirmPassword.secureTextEntry = true
+        confirmPassword.textColor = UIColor.lightGrayColor()
+        confirmPassword.font = UIFont.italicSystemFontOfSize(13)
+        confirmPassword.delegate = self*/
+        
         email.placeholder = "Enter email"
         email.textColor = UIColor.lightGrayColor()
         email.font = UIFont.italicSystemFontOfSize(13)
