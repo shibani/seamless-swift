@@ -11,7 +11,7 @@ import Foundation
 
 class AddressViewController: UIViewController, UITextFieldDelegate {
     
-    var valid:Bool = false
+    var valid:Bool = true
     
     @IBOutlet weak var userBtn: UIButton!
 
@@ -121,6 +121,5 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
            print("valid")
            //post to url here
         }
-        
     }
 }

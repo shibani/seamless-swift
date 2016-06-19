@@ -59,7 +59,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let escapedString = receivedCellName.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
         
-        let urlString = "http://www.bigchomp.com/json/restaurants/\(escapedString!)"
+        let urlString = "https://sm-seamless.herokuapp.com/restaurants/\(escapedString!)"
         
         if let url = NSURL(string: urlString) {
             if let restoData = try? NSData(contentsOfURL: url, options: []) {

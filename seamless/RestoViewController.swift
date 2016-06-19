@@ -127,7 +127,7 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
         
         let searchString = str
         
-        let urlString = "http://www.bigchomp.com/json/restaurants?\(searchString)"
+        let urlString = "https://sm-seamless.herokuapp.com/restaurants?\(searchString)"
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -146,7 +146,7 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
         
         let searchString = str
         
-        let urlString = "http://www.bigchomp.com/json/restaurants?\(searchString)"
+        let urlString = "https://sm-seamless.herokuapp.com/restaurants?\(searchString)"
         
         if let url = NSURL(string: urlString) {
             if let data = try? NSData(contentsOfURL: url, options: []) {
