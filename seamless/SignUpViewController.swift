@@ -16,6 +16,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var confPassword: UITextField!
+    
     @IBOutlet weak var email: UITextField!
     
     @IBOutlet weak var signUpBtn: UIButton!
@@ -34,11 +36,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         password.font = UIFont.italicSystemFontOfSize(13)
         password.delegate = self
         
-        /*confirmPassword.placeholder = "Confirm password"
-        confirmPassword.secureTextEntry = true
-        confirmPassword.textColor = UIColor.lightGrayColor()
-        confirmPassword.font = UIFont.italicSystemFontOfSize(13)
-        confirmPassword.delegate = self*/
+        confPassword.placeholder = "Confirm password"
+        confPassword.secureTextEntry = true
+        confPassword.textColor = UIColor.lightGrayColor()
+        confPassword.font = UIFont.italicSystemFontOfSize(13)
+        confPassword.delegate = self
         
         email.placeholder = "Enter email"
         email.textColor = UIColor.lightGrayColor()
@@ -84,8 +86,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let usernameText: String = username.text!
         let passwordText: String = password.text!
+        let confPasswordText: String = confPassword.text!
         let emailText: String = email.text!
-        let formText: String = "remote_signup"
+        
         
         if usernameText.characters.count < 2 {
             valid = false
@@ -95,6 +98,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if passwordText.characters.count < 8 {
             valid = false
             invalidFields += "\n\nPassword must be greater than 8 characters"
+        }
+        
+        if confPasswordText != passwordText {
+            valid = false
+            invalidFields += "\n\nPasswords do not match"
         }
         
         if !Helper.validateEmail(emailText){
@@ -112,13 +120,28 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //self.performSegueWithIdentifier("loadRestoView", sender: self)
             //post to url here
             
-            let myUrl = NSURL(string: "https://sm-seamless.herokuapp.com/signup");
-            let request = NSMutableURLRequest(URL:myUrl!);
-            request.HTTPMethod = "POST";
+            //let string = "https://sm-seamless.herokuapp.com/users"
+            let string = "http://localhost:3000/users"
+            let url = NSURL(string: string)
+            let session = NSURLSession.sharedSession()
+            let request = NSMutableURLRequest(URL: url!)
             
-            let postString = "email=\(emailText)&name=\(usernameText)&password=\(passwordText)&form=\(formText)";
+            request.HTTPMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+            //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
             
-            request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
+            //let postString = "email=" + emailText + "&username=" + usernameText + "&password=" + passwordText + "&passwordconf=" + confPasswordText;
+            
+            //let params = [ "email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText ]
+           
+            let params = [ "user" : ["email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText] ]
+            
+            let postString = "email=" + emailText + "&username=" + usernameText + "&password=" + passwordText + "&passwordconf=" + confPasswordText;
+            
+            //print(postString)
+            
+            /*request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
             
             let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
                 data, response, error in
@@ -133,9 +156,30 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 
                 //print out response body
                 let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("***** response date = \(responseString)");
+                print("***** response data = \(responseString)")
                 
                 var err: NSError?
+            }*/
+            
+            do {
+                //request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
+                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
+            }
+            catch {
+                
+            }
+            let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+                if let answer = response as? NSHTTPURLResponse {
+                    
+                    let code = answer.statusCode
+                    
+                    print(data)
+                    
+                    print("***** response = \(answer)");
+                    print("*****")
+                    print(code)
+                    
+                }
             }
             
             task.resume()

@@ -26,6 +26,13 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>localhost</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>sm-seamless.herokuapp.com</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>

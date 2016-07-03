@@ -226,7 +226,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oo6-QA-oYd">
-                                <rect key="frame" x="91" y="350" width="138" height="33"/>
+                                <rect key="frame" x="91" y="353" width="138" height="33"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
@@ -234,11 +234,17 @@
                                     <action selector="signUpBtnClicked:" destination="9RS-bP-WOk" eventType="touchUpInside" id="Emf-m4-bFb"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIK-8v-hZd">
+                                <rect key="frame" x="20" y="306" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="AE6-93-yGQ"/>
                     <connections>
+                        <outlet property="confPassword" destination="gIK-8v-hZd" id="hpP-Ax-Yyv"/>
                         <outlet property="email" destination="Uny-2u-7ub" id="lYE-iz-Lac"/>
                         <outlet property="password" destination="15S-9h-aPR" id="IS7-oS-T9z"/>
                         <outlet property="signUpBtn" destination="Oo6-QA-oYd" id="RSi-gY-XYO"/>
