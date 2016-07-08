@@ -8,7 +8,6 @@
 
 import UIKit
 
-var isLoggedIn:Int = 0
 
 class HomeViewController: UIViewController {
     
@@ -25,12 +24,21 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         
-        if (isLoggedIn != 1) {
+        if let emailText = NSUserDefaults.standardUserDefaults().stringForKey("loginKey") {
+            print("key: \(emailText)")
+            
+            let keychain = KeychainSwift()
+            let token = keychain.get(emailText)
+            print("id: \(token!)")
+            
+            //self.performSegueWithIdentifier("loadRestoView", sender: self)
             self.performSegueWithIdentifier("loadSignInView", sender: self)
+            
         } else {
-            //self.usernameLabel.text = prefs.valueForKey("USERNAME") as NSString
-            self.performSegueWithIdentifier("loadRestoView", sender: self)
+            print("no key")
+            self.performSegueWithIdentifier("loadSignInView", sender: self)
         }
+
     }
 
 }

@@ -8,7 +8,7 @@
         <!--Restaurants-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="overCurrentContext" id="BYZ-38-t0r" customClass="RestoViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RestoViewController" modalPresentationStyle="overCurrentContext" id="BYZ-38-t0r" customClass="RestoViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7Ft-6B-7b7"/>
                         <viewControllerLayoutGuide type="bottom" id="own-Qp-TIw"/>
@@ -123,7 +123,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="fNq-LF-8rR">
             <objects>
-                <viewController id="70A-dg-wLs" customClass="SignInViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="70A-dg-wLs" customClass="SignInViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r7S-cb-yhj"/>
                         <viewControllerLayoutGuide type="bottom" id="8XY-YP-aCk"/>
@@ -542,7 +542,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Nfz-UV-fYX">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TKr-9E-D8E" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="RootViewController" automaticallyAdjustsScrollViewInsets="NO" id="TKr-9E-D8E" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aQb-Sj-M24">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -713,7 +713,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Zx-SE-hcI"/>
+        <segue reference="nob-2A-MiD"/>
         <segue reference="60C-Ke-BIc"/>
     </inferredMetricsTieBreakers>
 </document>

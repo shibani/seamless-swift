@@ -12,6 +12,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var valid:Bool = true
     
+    var err: NSError?
+    
     @IBOutlet weak var username: UITextField!
 
     @IBOutlet weak var password: UITextField!
@@ -28,6 +30,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         username.placeholder = "Enter username"
         username.textColor = UIColor.lightGrayColor()
         username.font = UIFont.italicSystemFontOfSize(13)
+        username.autocorrectionType = UITextAutocorrectionType.No
+        username.autocapitalizationType = UITextAutocapitalizationType.None
         username.delegate = self
         
         password.placeholder = "Enter password"
@@ -45,6 +49,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         email.placeholder = "Enter email"
         email.textColor = UIColor.lightGrayColor()
         email.font = UIFont.italicSystemFontOfSize(13)
+        email.autocorrectionType = UITextAutocorrectionType.No
+        email.autocapitalizationType = UITextAutocapitalizationType.None
         email.delegate = self
     }
     
@@ -113,11 +119,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if (!valid){
             let alert = UIAlertController(title: "Signup failed", message: "Please fix the following fields\nbefore proceeding: " + invalidFields, preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            
             self.presentViewController(alert, animated: true, completion: nil)
+            
         } else {
-            print("valid")
-            //self.performSegueWithIdentifier("loadRestoView", sender: self)
             //post to url here
             
             //let string = "https://sm-seamless.herokuapp.com/users"
@@ -129,56 +133,53 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             request.HTTPMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
-            //request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
-            
-            //let postString = "email=" + emailText + "&username=" + usernameText + "&password=" + passwordText + "&passwordconf=" + confPasswordText;
-            
-            //let params = [ "email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText ]
            
             let params = [ "user" : ["email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText] ]
             
-            let postString = "email=" + emailText + "&username=" + usernameText + "&password=" + passwordText + "&passwordconf=" + confPasswordText;
-            
-            //print(postString)
-            
-            /*request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding);
-            
-            let task = NSURLSession.sharedSession().dataTaskWithRequest(request){
-                data, response, error in
-                
-                if error != nil{
-                    print("error=\(error)")
-                    return
-                }
-                
-                //print out response object
-                print("***** response = \(response)");
-                
-                //print out response body
-                let responseString = NSString(data: data!, encoding: NSUTF8StringEncoding)
-                print("***** response data = \(responseString)")
-                
-                var err: NSError?
-            }*/
             
             do {
-                //request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted)
                 request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
             }
             catch {
-                
+                print("error serializing JSON: \(error)")
             }
+            
             let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
                 if let answer = response as? NSHTTPURLResponse {
+                
+                    //let code = answer.statusCode
                     
-                    let code = answer.statusCode
+                    //let responseString: String = String(data: data!, encoding: NSUTF8StringEncoding)!
                     
-                    print(data)
+                    do{
+                        let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                        let userId = responseJSON["user_id"] as? (String)
+                        print("User: \(userId!)")
+                        
+                        let keychain = KeychainSwift()
+                        keychain.set(userId!, forKey: emailText)
+                        
+                        //set NSUserDefaults to say loginKey = true
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(emailText, forKey: "loginKey")
+                        
+                    } catch{
+                        print("error serializing JSON: \(error)")
+                    }
                     
-                    print("***** response = \(answer)");
-                    print("*****")
-                    print(code)
-                    
+                    if(self.err != nil) {
+                        print(self.err!.localizedDescription)
+                        //show these errors
+                    }
+                    else {
+                        /*let alert = UIAlertController(title: "Success!", message: "Your account has been created", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                        
+                        self.presentViewController(alert, animated: true, completion: nil)*/
+                        NSOperationQueue.mainQueue().addOperationWithBlock {
+                            self.performSegueWithIdentifier("loadRestoView", sender: self)
+                        }
+                    }
                 }
             }
             

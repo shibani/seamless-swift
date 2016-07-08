@@ -10,6 +10,7 @@
 		ED0220841CFA7A990091CAC1 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0220831CFA7A990091CAC1 /* SignInViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED0220861CFA7AAC0091CAC1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0220851CFA7AAC0091CAC1 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED0220881CFA9CF10091CAC1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0220871CFA9CF10091CAC1 /* HomeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		ED1E70361D29FFD70078BEF7 /* KeychainSwiftDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED1E70351D29FFD70078BEF7 /* KeychainSwiftDistrib.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2C41D11CC5D0FB007551DB /* CartItem.swift */; settings = {ASSET_TAGS = (); }; };
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* RestoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* RestoViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -47,6 +48,7 @@
 		ED0220831CFA7A990091CAC1 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		ED0220851CFA7AAC0091CAC1 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ED0220871CFA9CF10091CAC1 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		ED1E70351D29FFD70078BEF7 /* KeychainSwiftDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainSwiftDistrib.swift; sourceTree = "<group>"; };
 		ED2C41D11CC5D0FB007551DB /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -104,6 +106,7 @@
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
 				ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
+				ED1E70351D29FFD70078BEF7 /* KeychainSwiftDistrib.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
 				ED0220871CFA9CF10091CAC1 /* HomeViewController.swift */,
@@ -207,6 +210,7 @@
 				ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				ED0220841CFA7A990091CAC1 /* SignInViewController.swift in Sources */,
+				ED1E70361D29FFD70078BEF7 /* KeychainSwiftDistrib.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED0220861CFA7AAC0091CAC1 /* SignUpViewController.swift in Sources */,
 				ED0220881CFA9CF10091CAC1 /* HomeViewController.swift in Sources */,
