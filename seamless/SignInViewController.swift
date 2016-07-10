@@ -82,65 +82,71 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         let emailText: String = username.text!
         let passwordText: String = password.text!
         
-        if !Helper.validateEmail(emailText){
-            valid = false
-            invalidFields = "Email is invalid"
+        //no validation necessary, just submit to server and do the checks there
+        //let string = "https://sm-seamless.herokuapp.com/users"
+        let string = "http://localhost:3000//users/sign_in"
+        let url = NSURL(string: string)
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+            
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+            
+        let params = ["user" : ["email" : emailText, "password" : passwordText ] ]
+            
+        print(params)
+            
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
+        } catch {
+            print("error serializing JSON 1: \(error)")
         }
-        
-        if (!valid){
-            let alert = UIAlertController(title: "Signup failed", message: "Please fix the following fields\nbefore proceeding: " + invalidFields, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
             
-        } else {
-            //post to url here
-            
-            //let string = "https://sm-seamless.herokuapp.com/users"
-            let string = "http://localhost:3000//users/sign_in"
-            let url = NSURL(string: string)
-            let session = NSURLSession.sharedSession()
-            let request = NSMutableURLRequest(URL: url!)
-            
-            request.HTTPMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            
-            let params = ["user" : ["email" : emailText, "password" : passwordText] ]
-            
-            do {
-                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
-            }
-            catch {
-                print("error serializing JSON 1: \(error)")
-            }
-            
-            let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
                 
-                if let answer = response as? NSHTTPURLResponse {
-                    do{
-                        let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+            if (response as? NSHTTPURLResponse != nil) {
+                do{
+                    let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                         
-                        print("server response: \(responseJSON)")
-                        
-                    } catch{
-                        print("error serializing JSON 2: \(error)")
-                    }
+                    print("server response: \(responseJSON)")
                     
-                    if(self.err != nil) {
-                        print(self.err!.localizedDescription)
-                    }
-                    else {
-                        //alert first?
+                    if let userId = responseJSON["user_id"] as? (String){
+                        print("User: \(userId)")
+                        
+                        let keychain = KeychainSwift()
+                        keychain.set(userId, forKey: emailText)
+                        
+                        //set NSUserDefaults to say loginKey = true
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(emailText, forKey: "loginKey")
+                        
                         NSOperationQueue.mainQueue().addOperationWithBlock {
                             self.performSegueWithIdentifier("loadRestoView", sender: self)
                         }
+                    
+                    } else if let errors = responseJSON["errors"] as? (String){
+                        print("Error: \(errors)")
                         
+                        NSOperationQueue.mainQueue().addOperationWithBlock {
+                            let alert = UIAlertController(title: "Account sign in failed", message: "Please try again", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                            
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        }
                     }
+                    
+                } catch {
+                    print("error serializing JSON 2: \(error)")
+                }
+                    
+                if(self.err != nil) {
+                    print(self.err!.localizedDescription)
                 }
             }
-            
-            task.resume()
         }
+            
+        task.resume()
     }
     
     @IBAction func signUpBtnClicked(sender: AnyObject) {

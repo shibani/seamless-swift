@@ -145,7 +145,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             }
             
             let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-                if let answer = response as? NSHTTPURLResponse {
+                if (response as? NSHTTPURLResponse != nil) {
                 
                     //let code = answer.statusCode
                     
@@ -153,32 +153,58 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     
                     do{
                         let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                        let userId = responseJSON["user_id"] as? (String)
-                        print("User: \(userId!)")
+                        if let userId = responseJSON["user_id"] as? (String){
+                            print("User: \(userId)")
                         
-                        let keychain = KeychainSwift()
-                        keychain.set(userId!, forKey: emailText)
+                            let keychain = KeychainSwift()
+                            keychain.set(userId, forKey: emailText)
                         
-                        //set NSUserDefaults to say loginKey = true
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        defaults.setObject(emailText, forKey: "loginKey")
+                            //set NSUserDefaults to say loginKey = true
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(emailText, forKey: "loginKey")
+                        
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was successfully created!", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                    print("Handle Ok logic here")
+                                
+                                    defer {
+                                        dispatch_async( dispatch_get_main_queue(),{
+                                        self.performSegueWithIdentifier("loadRestoView", sender: self)
+                                        })
+                                    }
+                                })
+                            )
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                        /*} else if let errors = responseJSON["errors"] as? (String){*/
+                        } else {
+                            print(responseJSON)
+                            //print("Error: \(errors)")
+                            //response from server
+                            /*{
+                                errors =     {
+                                    email =         (
+                                        "has already been taken"
+                                    );
+                                };
+                            }*/
+
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                let alert = UIAlertController(title: "Account sign up failed", message: "Your account could not be created, please try again", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                                
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                        }
                         
                     } catch{
-                        print("error serializing JSON: \(error)")
+                        print("error serializing JSON2: \(error)")
                     }
                     
                     if(self.err != nil) {
                         print(self.err!.localizedDescription)
-                        //show these errors
-                    }
-                    else {
-                        /*let alert = UIAlertController(title: "Success!", message: "Your account has been created", preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        
-                        self.presentViewController(alert, animated: true, completion: nil)*/
-                        NSOperationQueue.mainQueue().addOperationWithBlock {
-                            self.performSegueWithIdentifier("loadRestoView", sender: self)
-                        }
+                        //show these error
                     }
                 }
             }
@@ -187,4 +213,3 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 }
-
