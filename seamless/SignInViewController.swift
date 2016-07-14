@@ -84,7 +84,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         //no validation necessary, just submit to server and do the checks there
         //let string = "https://sm-seamless.herokuapp.com/users"
-        let string = "http://localhost:3000//users/sign_in"
+        let string = "http://localhost:3030//users/sign_in"
         let url = NSURL(string: string)
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url!)

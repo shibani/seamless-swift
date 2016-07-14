@@ -125,7 +125,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             //post to url here
             
             //let string = "https://sm-seamless.herokuapp.com/users"
-            let string = "http://localhost:3000/users"
+            let string = "http://localhost:3030/users"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
             let request = NSMutableURLRequest(URL: url!)
@@ -164,22 +164,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             defaults.setObject(emailText, forKey: "loginKey")
                         
                             NSOperationQueue.mainQueue().addOperationWithBlock {
-                                let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was successfully created!", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-                                    print("Handle Ok logic here")
                                 
-                                    defer {
-                                        dispatch_async( dispatch_get_main_queue(),{
-                                        self.performSegueWithIdentifier("loadRestoView", sender: self)
-                                        })
-                                    }
-                                })
-                            )
-                            self.presentViewController(alert, animated: true, completion: nil)
+                                self.performSegueWithIdentifier("loadUserInfoView", sender: self)
                             }
                         /*} else if let errors = responseJSON["errors"] as? (String){*/
                         } else {
                             print(responseJSON)
+                            //parse this JSON properly
                             //print("Error: \(errors)")
                             //response from server
                             /*{

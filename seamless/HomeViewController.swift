@@ -31,8 +31,8 @@ class HomeViewController: UIViewController {
             let token = keychain.get(emailText)
             print("id: \(token!)")
             
-            //self.performSegueWithIdentifier("loadRestoView", sender: self)
-            self.performSegueWithIdentifier("loadSignInView", sender: self)
+            self.performSegueWithIdentifier("loadRestoView", sender: self)
+            //self.performSegueWithIdentifier("loadSignInView", sender: self)
             
         } else {
             print("no key")

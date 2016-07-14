@@ -46,6 +46,9 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
     
     @IBOutlet weak var cartButton: UIButton!
 
+    @IBOutlet weak var logoutBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -259,4 +262,18 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
         self.performSegueWithIdentifier("loadShoppingCart", sender: self)
     }
 
+    @IBAction func logoutBtnClicked(sender: AnyObject) {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let emailText = userDefaults.stringForKey("loginKey") {
+            
+            let keychain = KeychainSwift()
+            keychain.delete(emailText)
+            
+            userDefaults.removeObjectForKey("loginKey")
+            userDefaults.synchronize()
+        }
+        
+        UIControl().sendAction(Selector("suspend"), to: UIApplication.sharedApplication(), forEvent: nil)
+    }
 }

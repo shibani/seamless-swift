@@ -64,10 +64,22 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Restaurants" id="9Es-d2-RTl">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="uzz-kr-7mE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TIP-iN-bLk">
+                                <rect key="frame" x="16" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1C1-ML-r0N"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ubk-4B-mxO">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9Eg-vW-nqJ">
                                 <rect key="frame" x="184" y="7" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Button">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -79,6 +91,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cartButton" destination="9Eg-vW-nqJ" id="RpR-8M-Nf7"/>
+                        <outlet property="logoutBtn" destination="TIP-iN-bLk" id="Hgf-KA-10H"/>
                         <outlet property="searchBar" destination="VgU-xQ-K9w" id="06U-tL-xrQ"/>
                         <outlet property="tableView" destination="I4x-1j-OsP" id="S4w-Wf-dZf"/>
                         <segue destination="5lC-wy-OuR" kind="push" identifier="loadMenuView" id="7oG-t7-KVr"/>
@@ -250,11 +263,109 @@
                         <outlet property="signUpBtn" destination="Oo6-QA-oYd" id="RSi-gY-XYO"/>
                         <outlet property="username" destination="kzQ-Yc-ukP" id="Ssu-MQ-zs6"/>
                         <segue destination="BYZ-38-t0r" kind="push" identifier="loadRestoView" id="2Zx-SE-hcI"/>
+                        <segue destination="eNW-Lg-LbW" kind="push" identifier="loadUserInfoView" id="YCf-gI-Zcg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bud-d4-Wl1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1093" y="732"/>
+        </scene>
+        <!--User Info View Controller-->
+        <scene sceneID="mVf-be-lAQ">
+            <objects>
+                <viewController id="eNW-Lg-LbW" customClass="UserInfoViewController" customModule="seamless" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Zm-NZ-ae7"/>
+                        <viewControllerLayoutGuide type="bottom" id="kGZ-ej-PIQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FVI-Pd-cWC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSo-Pu-OKn">
+                                <rect key="frame" x="112" y="81" width="98" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yi6-SH-Ga4">
+                                <rect key="frame" x="20" y="162" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PxX-gd-vQh">
+                                <rect key="frame" x="20" y="208" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGh-KB-x9A">
+                                <rect key="frame" x="20" y="251" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-x9-vUZ">
+                                <rect key="frame" x="20" y="295" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uP6-nT-jhx">
+                                <rect key="frame" x="20" y="338" width="282" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAq-c0-huf">
+                                <rect key="frame" x="20" y="382" width="123" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dXM-6B-FEm">
+                                <rect key="frame" x="20" y="428" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter information for the primary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqz-7d-uuo">
+                                <rect key="frame" x="20" y="106" width="280" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwb-I5-Yjz">
+                                <rect key="frame" x="112" y="489" width="98" height="30"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitBtnClicked:" destination="eNW-Lg-LbW" eventType="touchUpInside" id="gLP-vu-yOW"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="accountholder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrx-nm-k5e">
+                                <rect key="frame" x="20" y="126" width="280" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a52-Eb-XRa">
+                                <rect key="frame" x="151" y="382" width="151" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="z5k-e9-NNQ"/>
+                    <connections>
+                        <outlet property="billAddress1" destination="EGh-KB-x9A" id="FY2-P3-pyC"/>
+                        <outlet property="billAddress2" destination="4A0-x9-vUZ" id="02F-Ym-kK7"/>
+                        <outlet property="billCity" destination="uP6-nT-jhx" id="g7E-b2-AP1"/>
+                        <outlet property="billState" destination="CAq-c0-huf" id="8Mx-9R-zgg"/>
+                        <outlet property="billZip" destination="a52-Eb-XRa" id="HHt-Xm-WHQ"/>
+                        <outlet property="firstName" destination="yi6-SH-Ga4" id="3VG-2E-ZLI"/>
+                        <outlet property="lastName" destination="PxX-gd-vQh" id="71i-Pt-PjY"/>
+                        <outlet property="primaryPhone" destination="dXM-6B-FEm" id="UKn-0J-9dm"/>
+                        <outlet property="submitBtn" destination="rwb-I5-Yjz" id="mFs-aZ-nE4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P0h-f3-KzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090" y="1369"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="4CZ-u3-Qd8">
@@ -713,7 +824,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="nob-2A-MiD"/>
+        <segue reference="2Zx-SE-hcI"/>
         <segue reference="60C-Ke-BIc"/>
     </inferredMetricsTieBreakers>
 </document>

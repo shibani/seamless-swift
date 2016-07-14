@@ -27,6 +27,7 @@
 		ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9133881C31B319009AD4AD /* Assets.xcassets */; };
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
 		EDA5F9FB1CD6696C0064F019 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA5F9FA1CD6696C0064F019 /* cart.png */; settings = {ASSET_TAGS = (); }; };
+		EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		ED91338B1C31B319009AD4AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA5F9FA1CD6696C0064F019 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cart.png; path = Assets.xcassets/cart.png; sourceTree = "<group>"; };
+		EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,7 @@
 				ED1E70351D29FFD70078BEF7 /* KeychainSwiftDistrib.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
+				EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */,
 				ED0220871CFA9CF10091CAC1 /* HomeViewController.swift */,
 				ED0220831CFA7A990091CAC1 /* SignInViewController.swift */,
 				ED0220851CFA7AAC0091CAC1 /* SignUpViewController.swift */,
@@ -214,6 +217,7 @@
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED0220861CFA7AAC0091CAC1 /* SignUpViewController.swift in Sources */,
 				ED0220881CFA9CF10091CAC1 /* HomeViewController.swift in Sources */,
+				EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
