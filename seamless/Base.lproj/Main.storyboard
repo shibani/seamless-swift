@@ -127,6 +127,7 @@
                     <connections>
                         <segue destination="70A-dg-wLs" kind="push" identifier="loadSignInView" id="Sr0-9X-mRe"/>
                         <segue destination="BYZ-38-t0r" kind="push" identifier="loadRestoView" id="wlB-wd-oXJ"/>
+                        <segue destination="eNW-Lg-LbW" kind="push" identifier="loadUserInfoView" id="5D9-qM-jYQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Sz-6A-M2l" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -199,6 +200,7 @@
                         <outlet property="username" destination="XWr-yO-w8j" id="hZi-mN-niA"/>
                         <segue destination="BYZ-38-t0r" kind="push" identifier="loadRestoView" id="nob-2A-MiD"/>
                         <segue destination="9RS-bP-WOk" kind="push" identifier="loadSignUpView" id="3d9-oc-R4U"/>
+                        <segue destination="eNW-Lg-LbW" kind="push" identifier="loadUserInfoView" id="uxm-gA-yrt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbt-we-LnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -361,6 +363,7 @@
                         <outlet property="lastName" destination="PxX-gd-vQh" id="71i-Pt-PjY"/>
                         <outlet property="primaryPhone" destination="dXM-6B-FEm" id="UKn-0J-9dm"/>
                         <outlet property="submitBtn" destination="rwb-I5-Yjz" id="mFs-aZ-nE4"/>
+                        <segue destination="BYZ-38-t0r" kind="push" identifier="loadRestoView" id="Imx-gM-lrW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P0h-f3-KzB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,7 +827,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2Zx-SE-hcI"/>
+        <segue reference="uxm-gA-yrt"/>
+        <segue reference="Imx-gM-lrW"/>
         <segue reference="60C-Ke-BIc"/>
     </inferredMetricsTieBreakers>
 </document>

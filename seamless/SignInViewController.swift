@@ -77,8 +77,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signInBtnClicked(sender: AnyObject) {
         //if signin credentials validate
         
-        var invalidFields: String = ""
-        
         let emailText: String = username.text!
         let passwordText: String = password.text!
         
@@ -112,17 +110,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     print("server response: \(responseJSON)")
                     
                     if let userId = responseJSON["user_id"] as? (String){
-                        print("User: \(userId)")
                         
-                        let keychain = KeychainSwift()
-                        keychain.set(userId, forKey: emailText)
+                        if NSUserDefaults.standardUserDefaults().objectForKey("userInfo") != nil{
+                            print("User: \(userId)")
                         
-                        //set NSUserDefaults to say loginKey = true
-                        let defaults = NSUserDefaults.standardUserDefaults()
-                        defaults.setObject(emailText, forKey: "loginKey")
+                            let keychain = KeychainSwift()
+                            keychain.set(userId, forKey: emailText)
                         
-                        NSOperationQueue.mainQueue().addOperationWithBlock {
-                            self.performSegueWithIdentifier("loadRestoView", sender: self)
+                            //set NSUserDefaults to say loginKey = true
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(emailText, forKey: "loginKey")
+                        
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                self.performSegueWithIdentifier("loadRestoView", sender: self)
+                            }
+                        } else {
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                self.performSegueWithIdentifier("loadUserInfoView", sender: self)
+                            }
                         }
                     
                     } else if let errors = responseJSON["errors"] as? (String){

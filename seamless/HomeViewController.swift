@@ -25,14 +25,19 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(true)
         
         if let emailText = NSUserDefaults.standardUserDefaults().stringForKey("loginKey") {
-            print("key: \(emailText)")
             
-            let keychain = KeychainSwift()
-            let token = keychain.get(emailText)
-            print("id: \(token!)")
-            
-            self.performSegueWithIdentifier("loadRestoView", sender: self)
-            //self.performSegueWithIdentifier("loadSignInView", sender: self)
+            if NSUserDefaults.standardUserDefaults().objectForKey("userInfo") != nil{
+                print("key: \(emailText)")
+                
+                let keychain = KeychainSwift()
+                let token = keychain.get(emailText)
+                print("id: \(token!)")
+                
+                self.performSegueWithIdentifier("loadRestoView", sender: self)
+                //self.performSegueWithIdentifier("loadSignInView", sender: self)
+            } else {
+                self.performSegueWithIdentifier("loadUserInfoView", sender: self)
+            }
             
         } else {
             print("no key")

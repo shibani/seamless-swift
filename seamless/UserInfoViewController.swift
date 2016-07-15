@@ -179,7 +179,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             
         } else {
-            //post to url here
+            //do sign in with email and token here
             
             //let string = "https://sm-seamless.herokuapp.com/users"
             let string = "http://localhost:3030/users"
@@ -191,76 +191,98 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("application/json", forHTTPHeaderField: "Accept")
             
-            let params = [ "user_info" : ["email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText] ]
-            
-            
-            do {
-                request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
-            }
-            catch {
-                print("error serializing JSON: \(error)")
-            }
-            
-            let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-                if (response as? NSHTTPURLResponse != nil) {
+            if let emailText = NSUserDefaults.standardUserDefaults().stringForKey("loginKey") {
+                
+                if NSUserDefaults.standardUserDefaults().objectForKey("userInfo") != nil{
+                     //if user_info is set, segue to restoview
+                    self.performSegueWithIdentifier("loadRestoView", sender: self)
+                } else {
+                    // if user_info is not set, post it here
+                    print("key: \(emailText)")
                     
-                    //let code = answer.statusCode
+                    let keychain = KeychainSwift()
+                    let token = keychain.get(emailText)
+                    print("id: \(token!)")
                     
-                    //let responseString: String = String(data: data!, encoding: NSUTF8StringEncoding)!
+                    let jsonEmail: String = emailText
+                    let jsonToken: String = token!
+                    let jsonFirstname :String = firstname!
+                    let jsonLastname :String = lastname!
+                    let jsonAddress1 :String = address1!
+                    let jsonAddress2 :String = address2!
+                    let jsonCity :String = city!
+                    let jsonState :String = state!
+                    let jsonZip :String = zip!
+                    let jsonPhone :String = phone!
                     
-                    do{
-                        let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                        if let userId = responseJSON["user_id"] as? (String){
-                            print("User: \(userId)")
-                            
-                            NSOperationQueue.mainQueue().addOperationWithBlock {
-                                let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was successfully created!", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-                                    print("Handle Ok logic here")
-                                    
-                                    defer {
-                                        dispatch_async( dispatch_get_main_queue(),{
-                                        //self.performSegueWithIdentifier("loadRestoView", sender: self)
-                                        self.performSegueWithIdentifier("loadUserInfoView", sender: self)
-                                        })
-                                    }
-                                })
-                                )
-                                self.presentViewController(alert, animated: true, completion: nil)
-                            }
-                            /*} else if let errors = responseJSON["errors"] as? (String){*/
-                        } else {
-                            print(responseJSON)
-                            //print("Error: \(errors)")
-                            //response from server
-                            /*{
-                            errors =     {
-                            email =         (
-                            "has already been taken"
-                            );
-                            };
-                            }*/
-                            
-                            NSOperationQueue.mainQueue().addOperationWithBlock {
-                                let alert = UIAlertController(title: "Account sign up failed", message: "Your account could not be created, please try again", preferredStyle: UIAlertControllerStyle.Alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    /*let params = [ "user" : [ "email" : jsonEmail, "token" : jsonToken ],  "user_info" : [ "firstname" : jsonFirstname, "lastname" : jsonLastname, "address1" : jsonAddress1, "address2" : jsonAddress2, "city" : jsonCity, "state" : jsonState, "zip" : jsonZip, "primary_phone" : jsonPhone ] ]*/
+                    
+                    let params = [
+                        "user" : [
+                                "email" : jsonEmail,
+                                "token" : jsonToken
+                        ],
+                        "user_info" : [
+                                "firstname" : jsonFirstname,
+                                "lastname" : jsonLastname,
+                                "address1" : jsonAddress1,
+                                "address2" : jsonAddress2,
+                                "city" : jsonCity,
+                                "state" : jsonState,
+                                "zip" : jsonZip,
+                                "primary_phone" : jsonPhone
+                        ]
+                    ]
+                    
+                    print(params)
+                    
+                    //sending to server
+                    do {
+                        request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params as [String: Dictionary], options:NSJSONWritingOptions.PrettyPrinted)
+                        
+                    } catch {
+                        print("error serializing JSON 1: \(error)")
+                    }
+                    //start task
+                    let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+                        if (response as? NSHTTPURLResponse != nil) {
+                            //returning from server
+                            do{
+                                let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                                 
-                                self.presentViewController(alert, animated: true, completion: nil)
+                                print(responseJSON)
+                                
+                                /*add if else block here, if successful show alert and segue to resto view else show alert and do nothing
+                                
+                                NSOperationQueue.mainQueue().addOperationWithBlock {
+                                    let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was successfully created!", preferredStyle: UIAlertControllerStyle.Alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                        print("Handle Ok logic here")
+                                        
+                                        defer {
+                                            dispatch_async( dispatch_get_main_queue(),{
+                                            self.performSegueWithIdentifier("loadRestoView", sender: self)
+                                            })
+                                        }
+                                    })
+                                    )
+                                    self.presentViewController(alert, animated: true, completion: nil)
+                                }*/
+                                
+                            }catch{
+                                print("error serializing JSON2: \(error)")
+                            }
+                            
+                            if(self.err != nil) {
+                                print(self.err!.localizedDescription)
+                                //show these error
                             }
                         }
-                        
-                    } catch{
-                        print("error serializing JSON2: \(error)")
                     }
                     
-                    if(self.err != nil) {
-                        print(self.err!.localizedDescription)
-                        //show these error
-                    }
+                    task.resume()
                 }
             }
-            
-            task.resume()
         }
     }
 }

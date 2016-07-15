@@ -136,7 +136,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
            
             let params = [ "user" : ["email" : emailText, "username" : usernameText, "password" : passwordText, "password_confirmation" : confPasswordText] ]
             
-            
             do {
                 request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options:NSJSONWritingOptions.PrettyPrinted)
             }
