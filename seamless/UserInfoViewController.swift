@@ -182,7 +182,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
             //do sign in with email and token here
             
             //let string = "https://sm-seamless.herokuapp.com/users"
-            let string = "http://localhost:3030/users"
+            let string = "http://localhost:3030/user_info"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
             let request = NSMutableURLRequest(URL: url!)
@@ -214,8 +214,6 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                     let jsonState :String = state!
                     let jsonZip :String = zip!
                     let jsonPhone :String = phone!
-                    
-                    /*let params = [ "user" : [ "email" : jsonEmail, "token" : jsonToken ],  "user_info" : [ "firstname" : jsonFirstname, "lastname" : jsonLastname, "address1" : jsonAddress1, "address2" : jsonAddress2, "city" : jsonCity, "state" : jsonState, "zip" : jsonZip, "primary_phone" : jsonPhone ] ]*/
                     
                     let params = [
                         "user" : [
@@ -251,23 +249,65 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                                 let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                                 
                                 print(responseJSON)
+                                print(responseJSON["status"]! as? (String))
                                 
-                                /*add if else block here, if successful show alert and segue to resto view else show alert and do nothing
-                                
-                                NSOperationQueue.mainQueue().addOperationWithBlock {
-                                    let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was successfully created!", preferredStyle: UIAlertControllerStyle.Alert)
-                                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
-                                        print("Handle Ok logic here")
+                                if responseJSON["status"]! as? (String) == "success" {
+                                    
+                                    let defaults = NSUserDefaults.standardUserDefaults()
+                                    defaults.setObject("true", forKey: "userInfo")
+                                    
+                                                                        
+                                    NSOperationQueue.mainQueue().addOperationWithBlock {
+                                        let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was created successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                            print("Handle Ok logic here")
+                                            
+                                            defer {
+                                                dispatch_async( dispatch_get_main_queue(),{
+                                                self.performSegueWithIdentifier("loadRestoView", sender: self)
+                                                })
+                                            }
+                                        })
+                                        )
+                                        self.presentViewController(alert, animated: true, completion: nil)
+                                    }
+                                    
+                                } else if let userId = responseJSON["user_id"] as? (String){
+                                    print("User: \(userId)")
+
+                                    let defaults = NSUserDefaults.standardUserDefaults()
+                                    
+                                    defaults.setObject("true", forKey: "userInfo")
+                                    defaults.setObject(emailText, forKey: "loginKey")
                                         
-                                        defer {
-                                            dispatch_async( dispatch_get_main_queue(),{
-                                            self.performSegueWithIdentifier("loadRestoView", sender: self)
-                                            })
-                                        }
-                                    })
-                                    )
-                                    self.presentViewController(alert, animated: true, completion: nil)
-                                }*/
+                                    let keychain = KeychainSwift()
+                                    keychain.set(userId, forKey: emailText)
+                                    
+                                    
+                                    NSOperationQueue.mainQueue().addOperationWithBlock {
+                                        let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was created successfully!", preferredStyle: UIAlertControllerStyle.Alert)
+                                            alert.addAction(UIAlertAction(title: "OK",style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                                print("Handle Ok logic here")
+                                                
+                                            defer {
+                                                dispatch_async( dispatch_get_main_queue(),{
+                                                self.performSegueWithIdentifier("loadRestoView", sender: self)
+                                                })
+                                            }
+                                        })
+                                        )
+
+                                    }
+                            } else {
+                                    
+                                    NSOperationQueue.mainQueue().addOperationWithBlock {
+                                        let alert = UIAlertController(title: "Oops please try again", message: "Something went wrong, please re-enter your address info", preferredStyle: UIAlertControllerStyle.Alert)
+                                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                            print("Handle Ok logic here")
+                                        })
+                                        )
+                                    }
+                                }
                                 
                             }catch{
                                 print("error serializing JSON2: \(error)")
@@ -275,7 +315,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                             
                             if(self.err != nil) {
                                 print(self.err!.localizedDescription)
-                                //show these error
+                                //show these errors
                             }
                         }
                     }

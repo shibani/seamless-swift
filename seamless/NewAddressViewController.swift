@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class AddressViewController: UIViewController, UITextFieldDelegate {
+class NewAddressViewController: UIViewController, UITextFieldDelegate {
     
     var valid:Bool = true
     

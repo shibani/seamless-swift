@@ -88,6 +88,6 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func checkOutBtnClicked(sender: AnyObject) {
         
-        self.performSegueWithIdentifier("loadUserView", sender: self)
+        self.performSegueWithIdentifier("loadAddressView", sender: self)
     }
 }

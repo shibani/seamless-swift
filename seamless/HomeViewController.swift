@@ -25,8 +25,11 @@ class HomeViewController: UIViewController {
         super.viewDidAppear(true)
         
         if let emailText = NSUserDefaults.standardUserDefaults().stringForKey("loginKey") {
+            let userInfoText = NSUserDefaults.standardUserDefaults().stringForKey("userInfo")
+            print("key: \(emailText)")
+            print("userInfo: \(userInfoText)")
             
-            if NSUserDefaults.standardUserDefaults().objectForKey("userInfo") != nil{
+            if userInfoText == "true"{
                 print("key: \(emailText)")
                 
                 let keychain = KeychainSwift()
@@ -36,6 +39,7 @@ class HomeViewController: UIViewController {
                 self.performSegueWithIdentifier("loadRestoView", sender: self)
                 //self.performSegueWithIdentifier("loadSignInView", sender: self)
             } else {
+                //self.performSegueWithIdentifier("loadRestoView", sender: self)
                 self.performSegueWithIdentifier("loadUserInfoView", sender: self)
             }
             
