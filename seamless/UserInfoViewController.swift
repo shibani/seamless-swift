@@ -181,7 +181,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
         } else {
             //do sign in with email and token here
             
-            //let string = "https://sm-seamless.herokuapp.com/users"
+            //let string = "https://sm-seamless.herokuapp.com/user_info"
             let string = "http://localhost:3030/user_info"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
@@ -249,14 +249,17 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                                 let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                                 
                                 print(responseJSON)
-                                print(responseJSON["status"]! as? (String))
+                                print(responseJSON["message"]! as? (String))
+                                let userIdString = (responseJSON["userId"])!
                                 
-                                if responseJSON["status"]! as? (String) == "success" {
+                                if responseJSON["message"]! as? (String) == "success" {
+                                    
+                                    print("userIdString: \(userIdString)")
                                     
                                     let defaults = NSUserDefaults.standardUserDefaults()
                                     defaults.setObject("true", forKey: "userInfo")
+                                    defaults.setObject(userIdString, forKey: "userId")
                                     
-                                                                        
                                     NSOperationQueue.mainQueue().addOperationWithBlock {
                                         let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was created successfully!", preferredStyle: UIAlertControllerStyle.Alert)
                                         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
@@ -272,7 +275,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                                         self.presentViewController(alert, animated: true, completion: nil)
                                     }
                                     
-                                } else if let userId = responseJSON["user_id"] as? (String){
+                                } else if let userId = responseJSON["userId"] as? (String){
                                     print("User: \(userId)")
 
                                     let defaults = NSUserDefaults.standardUserDefaults()
@@ -282,7 +285,6 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                                         
                                     let keychain = KeychainSwift()
                                     keychain.set(userId, forKey: emailText)
-                                    
                                     
                                     NSOperationQueue.mainQueue().addOperationWithBlock {
                                         let alert = UIAlertController(title: "Account created", message: "Welcome! Your account was created successfully!", preferredStyle: UIAlertControllerStyle.Alert)

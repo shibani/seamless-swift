@@ -161,6 +161,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             //set NSUserDefaults to say loginKey = true
                             let defaults = NSUserDefaults.standardUserDefaults()
                             defaults.setObject(emailText, forKey: "loginKey")
+                            defaults.setObject(usernameText, forKey: "username")
                         
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 

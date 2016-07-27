@@ -271,6 +271,9 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
             keychain.delete(emailText)
             
             userDefaults.removeObjectForKey("loginKey")
+            userDefaults.removeObjectForKey("userInfo")
+            userDefaults.removeObjectForKey("username")
+            userDefaults.removeObjectForKey("userId")
             userDefaults.synchronize()
         }
         
