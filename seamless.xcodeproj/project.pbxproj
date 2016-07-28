@@ -30,7 +30,6 @@
 		EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDC4939E1D4545690012E199 /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EDC493A01D4548E70012E199 /* EditAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4939F1D4548E70012E199 /* EditAddressViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDC493A21D454DAE0012E199 /* UserAcctViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDE8699F1CC3F5710086AD0C /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDE8699E1CC3F5710086AD0C /* CartViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -74,7 +73,6 @@
 		EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
-		EDC4939F1D4548E70012E199 /* EditAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditAddressViewController.swift; sourceTree = "<group>"; };
 		EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAcctViewController.swift; sourceTree = "<group>"; };
 		EDE8699E1CC3F5710086AD0C /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,7 +128,6 @@
 				ED2C41D11CC5D0FB007551DB /* CartItem.swift */,
 				ED7EA90B1CD824EA00DC1E57 /* Helper.swift */,
 				EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */,
-				EDC4939F1D4548E70012E199 /* EditAddressViewController.swift */,
 				ED90536D1CF3F8C800C5513F /* NewAddressViewController.swift */,
 				EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
@@ -227,7 +224,6 @@
 				ED1E70361D29FFD70078BEF7 /* KeychainSwiftDistrib.swift in Sources */,
 				ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */,
 				ED0220861CFA7AAC0091CAC1 /* SignUpViewController.swift in Sources */,
-				EDC493A01D4548E70012E199 /* EditAddressViewController.swift in Sources */,
 				ED0220881CFA9CF10091CAC1 /* HomeViewController.swift in Sources */,
 				EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,

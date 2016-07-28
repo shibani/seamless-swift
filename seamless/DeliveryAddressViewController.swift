@@ -12,6 +12,20 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
     
     var err: NSError?
     
+    @IBOutlet weak var nameField: UILabel!
+    
+    @IBOutlet weak var address1Field: UILabel!
+    
+    @IBOutlet weak var address2Field: UILabel!
+    
+    @IBOutlet weak var cityField: UILabel!
+    
+    @IBOutlet weak var stateField: UILabel!
+    
+    @IBOutlet weak var zipField: UILabel!
+    
+    @IBOutlet weak var phoneField: UILabel!
+    
     @IBOutlet weak var editAddressBtn: UIButton!
 
     @IBOutlet weak var newAddressBtn: UIButton!
@@ -23,8 +37,6 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
         super.viewDidLoad()
         
         let defaults = NSUserDefaults.standardUserDefaults()
-        let username = defaults.stringForKey("username")
-        let userId = defaults.stringForKey("userId")
         let emailText = defaults.stringForKey("loginKey")
         
         let keychain = KeychainSwift()
@@ -34,13 +46,11 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
         let jsonEmail: String = emailText!
         let jsonToken: String = token!
         
-        print("username: \(username!)")
-        print("userId: \(userId!)")
         print("jsonEmail: \(jsonEmail)")
         print("jsonToken: \(jsonToken)")
         
-        //let urlString = "https://sm-seamless.herokuapp.com/json/\(userId)/\(username)"
-        let urlString = "http://localhost:3030/json/\(userId!)/\(username!)"
+        //let urlString = "https://sm-seamless.herokuapp.com/show_json"
+        let urlString = "http://localhost:3030/show_json"
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url!)
@@ -71,14 +81,26 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
                     
                     print("coming from server: \(responseJSON)")
                     
-                    /*let firstname = responseJSON["firstname"]!
-                    let lastname = responseJSON["lastname"]!
-                    let address1 = responseJSON["address1"]!
-                    let address2 = responseJSON["address2"]!
-                    let city = responseJSON["city"]!
-                    let state = responseJSON["state"]!
-                    let zip = responseJSON["zip"]!
-                    let primary_phone = responseJSON["primary_phone"]!*/
+                    let firstname = responseJSON["firstname"] as! String
+                    let lastname = responseJSON["lastname"] as! String
+                    let address1 = responseJSON["address1"] as! String
+                    let address2 = responseJSON["address2"] as! String
+                    let city = responseJSON["city"] as! String
+                    let state = responseJSON["state"] as! String
+                    let zip = responseJSON["zip"] as! String
+                    let primary_phone = responseJSON["primary_phone"] as! String
+                    
+                    defer {
+                        dispatch_async( dispatch_get_main_queue(),{
+                        self.nameField.text = firstname + " " + lastname
+                        self.address1Field.text = address1
+                        self.address2Field.text = address2
+                        self.cityField.text = city
+                        self.stateField.text = state
+                        self.zipField.text = zip
+                        self.phoneField.text = primary_phone
+                        })
+                    }
                     
                 }catch{
                     print("error serializing JSON2: \(error)")

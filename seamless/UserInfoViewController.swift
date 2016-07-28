@@ -36,7 +36,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
-        
+
         firstName.placeholder = "Enter First Name"
         firstName.textColor = UIColor.lightGrayColor()
         firstName.font = UIFont.italicSystemFontOfSize(13)
