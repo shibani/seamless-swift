@@ -300,7 +300,7 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
                                         )
 
                                     }
-                            } else {
+                                } else {
                                     
                                     NSOperationQueue.mainQueue().addOperationWithBlock {
                                         let alert = UIAlertController(title: "Oops please try again", message: "Something went wrong, please re-enter your address info", preferredStyle: UIAlertControllerStyle.Alert)

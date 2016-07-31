@@ -25,8 +25,6 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
     @IBOutlet weak var zipField: UILabel!
     
     @IBOutlet weak var phoneField: UILabel!
-    
-    @IBOutlet weak var editAddressBtn: UIButton!
 
     @IBOutlet weak var newAddressBtn: UIButton!
     

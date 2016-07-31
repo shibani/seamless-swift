@@ -51,6 +51,37 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate {
         self.phoneField.delegate = self;
         self.deliveryInstructions.delegate = self;
         self.placeLabel.delegate = self;
+        
+        self.firstName.autocorrectionType = UITextAutocorrectionType.No
+        self.firstName.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.lastName.autocorrectionType = UITextAutocorrectionType.No
+        self.lastName.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.addressField.autocorrectionType = UITextAutocorrectionType.No
+        self.addressField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.aptField.autocorrectionType = UITextAutocorrectionType.No
+        self.aptField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.cityField.autocorrectionType = UITextAutocorrectionType.No
+        self.cityField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.stateField.autocorrectionType = UITextAutocorrectionType.No
+        self.stateField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.crossStreetField.autocorrectionType = UITextAutocorrectionType.No
+        self.crossStreetField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.phoneField.autocorrectionType = UITextAutocorrectionType.No
+        self.phoneField.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.deliveryInstructions.autocorrectionType = UITextAutocorrectionType.No
+        self.deliveryInstructions.autocapitalizationType = UITextAutocapitalizationType.None
+        
+        self.placeLabel.autocorrectionType = UITextAutocorrectionType.No
+        self.placeLabel.autocapitalizationType = UITextAutocapitalizationType.None
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -186,8 +217,48 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate {
                 if (response as? NSHTTPURLResponse != nil) {
                     do{
                         let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
-                    } catch {
                         
+                        print(responseJSON)
+                        print(responseJSON["message"]! as? (String))
+                        
+                        if responseJSON["message"]! as? (String) == "success" {
+                            
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                let alert = UIAlertController(title: "Thanks", message: "Delivery address successfully added!", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                    print("Handle Ok logic here")
+                                    
+                                    defer {
+                                        dispatch_async( dispatch_get_main_queue(),{
+                                        
+                                            deliveryAddress = jsonPlaceType
+                                        self.performSegueWithIdentifier("loadUserAcctDetailsView", sender: self)
+                                        })
+                                    }
+                                })
+                                )
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                        
+                        } else{
+                            
+                            NSOperationQueue.mainQueue().addOperationWithBlock {
+                                let alert = UIAlertController(title: "Oops, something went wrong!", message: "Please re-enter your address info again", preferredStyle: UIAlertControllerStyle.Alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                    print("Handle Ok logic here")
+                                })
+                                )
+                                self.presentViewController(alert, animated: true, completion: nil)
+                            }
+                        }
+                        
+                    } catch {
+                        print("error serializing JSON2: \(error)")
+                    }
+                    
+                    if(self.err != nil) {
+                        print(self.err!.localizedDescription)
+                        //show these errors
                     }
                 }
             }

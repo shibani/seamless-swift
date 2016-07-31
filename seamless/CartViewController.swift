@@ -9,6 +9,7 @@
 import UIKit
 
 var shoppingCartItemsArray:[CartItem] = []
+var deliveryAddress :String = "acct_primary"
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
