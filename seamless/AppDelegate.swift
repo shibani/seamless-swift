@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //Well, the general idea is to include the token type... if you are using a Bearer token type, you can have "Authorization : Bearer <YOUR_ACCESS_TOKEN>"
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //Stripe.setDefaultPublishableKey("pk_test_PkGxcyzfW8K2danqRJ75JSCG")
+        STPPaymentConfiguration.sharedConfiguration().publishableKey = "pk_test_PkGxcyzfW8K2danqRJ75JSCG"
         // Override point for customization after application launch.
         return true
     }

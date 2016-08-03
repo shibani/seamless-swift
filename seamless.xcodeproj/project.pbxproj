@@ -17,11 +17,14 @@
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
 		ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD411CF3ED04002B3324 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		ED6D00181D5040F300C6B9FC /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6D00171D5040F300C6B9FC /* Stripe.framework */; settings = {ASSET_TAGS = (); }; };
+		ED6D001A1D50413900C6B9FC /* Stripe.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ED6D00191D50413900C6B9FC /* Stripe.bundle */; settings = {ASSET_TAGS = (); }; };
 		ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7EA90B1CD824EA00DC1E57 /* Helper.swift */; settings = {ASSET_TAGS = (); }; };
 		ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E62641C61626400C8174C /* OneShotLocationManager.swift */; settings = {ASSET_TAGS = (); }; };
 		ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8E62661C61627500C8174C /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		ED90536E1CF3F8C800C5513F /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED90536D1CF3F8C800C5513F /* NewAddressViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		ED90F5AB1D5197550059B8DD /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = ED90F5AA1D5197550059B8DD /* DLRadioButton.m */; settings = {ASSET_TAGS = (); }; };
 		ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133811C31B319009AD4AD /* AppDelegate.swift */; };
 		ED9133871C31B319009AD4AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED9133851C31B319009AD4AD /* Main.storyboard */; };
 		ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED9133881C31B319009AD4AD /* Assets.xcassets */; };
@@ -57,11 +60,16 @@
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		ED62FD411CF3ED04002B3324 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewCell.swift; sourceTree = "<group>"; };
+		ED6D00171D5040F300C6B9FC /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
+		ED6D00191D50413900C6B9FC /* Stripe.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Stripe.bundle; path = Stripe.framework/Stripe.bundle; sourceTree = "<group>"; };
 		ED7EA90B1CD824EA00DC1E57 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		ED87BCDF1CBAAF5C00EE3065 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		ED8E62641C61626400C8174C /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 		ED8E62661C61627500C8174C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		ED90536D1CF3F8C800C5513F /* NewAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
+		ED90F5A61D5189900059B8DD /* StripeBridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StripeBridgingHeader.h; sourceTree = "<group>"; };
+		ED90F5A91D5197550059B8DD /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLRadioButton.h; path = seamless/DLRadioButton.h; sourceTree = "<group>"; };
+		ED90F5AA1D5197550059B8DD /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLRadioButton.m; path = seamless/DLRadioButton.m; sourceTree = "<group>"; };
 		ED91337E1C31B319009AD4AD /* seamless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = seamless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED9133811C31B319009AD4AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED9133831C31B319009AD4AD /* RestoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestoViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */,
+				ED6D00181D5040F300C6B9FC /* Stripe.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +101,11 @@
 		ED9133751C31B319009AD4AD = {
 			isa = PBXGroup;
 			children = (
+				ED6D00191D50413900C6B9FC /* Stripe.bundle */,
+				ED6D00171D5040F300C6B9FC /* Stripe.framework */,
 				ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */,
+				ED90F5A91D5197550059B8DD /* DLRadioButton.h */,
+				ED90F5AA1D5197550059B8DD /* DLRadioButton.m */,
 				ED9133801C31B319009AD4AD /* seamless */,
 				ED91337F1C31B319009AD4AD /* Products */,
 			);
@@ -109,6 +122,7 @@
 		ED9133801C31B319009AD4AD /* seamless */ = {
 			isa = PBXGroup;
 			children = (
+				ED90F5A61D5189900059B8DD /* StripeBridgingHeader.h */,
 				ED8E62661C61627500C8174C /* SwiftyJSON.swift */,
 				ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
@@ -198,6 +212,7 @@
 			files = (
 				ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */,
 				EDA5F9FB1CD6696C0064F019 /* cart.png in Resources */,
+				ED6D001A1D50413900C6B9FC /* Stripe.bundle in Resources */,
 				ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */,
 				ED9133871C31B319009AD4AD /* Main.storyboard in Resources */,
 			);
@@ -226,6 +241,7 @@
 				ED0220861CFA7AAC0091CAC1 /* SignUpViewController.swift in Sources */,
 				ED0220881CFA9CF10091CAC1 /* HomeViewController.swift in Sources */,
 				EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */,
+				ED90F5AB1D5197550059B8DD /* DLRadioButton.m in Sources */,
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
@@ -341,10 +357,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = seamless/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindred.seamless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./seamless/StripeBridgingHeader.h;
 			};
 			name = Debug;
 		};
@@ -353,10 +374,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = seamless/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kindred.seamless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = ./seamless/StripeBridgingHeader.h;
 			};
 			name = Release;
 		};

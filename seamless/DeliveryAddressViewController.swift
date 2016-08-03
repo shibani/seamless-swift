@@ -120,6 +120,10 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
+        
+        if deliveryAddress != "acct_primary" {
+            newAddressBtn.hidden = true
+        }
     }
     
     @IBAction func editAddressBtnClicked(sender: AnyObject) {
