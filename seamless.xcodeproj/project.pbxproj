@@ -15,6 +15,7 @@
 		ED2D89911C387D040090C10C /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED2D89901C387D040090C10C /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A31C61A28E00DE1B75 /* RestoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* RestoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
+		ED4FF37D1D52D154007BF12E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4FF37C1D52D154007BF12E /* checkbox.png */; settings = {ASSET_TAGS = (); }; };
 		ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD411CF3ED04002B3324 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED6D00181D5040F300C6B9FC /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6D00171D5040F300C6B9FC /* Stripe.framework */; settings = {ASSET_TAGS = (); }; };
@@ -58,6 +59,7 @@
 		ED2C41D11CC5D0FB007551DB /* CartItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ED4FF37C1D52D154007BF12E /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox.png; path = Assets.xcassets/checkbox.png; sourceTree = "<group>"; };
 		ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		ED62FD411CF3ED04002B3324 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewCell.swift; sourceTree = "<group>"; };
 		ED6D00171D5040F300C6B9FC /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				ED90536D1CF3F8C800C5513F /* NewAddressViewController.swift */,
 				EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
+				ED4FF37C1D52D154007BF12E /* checkbox.png */,
 				EDA5F9FA1CD6696C0064F019 /* cart.png */,
 				ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */,
 				ED91338D1C31B319009AD4AD /* Info.plist */,
@@ -215,6 +218,7 @@
 				ED6D001A1D50413900C6B9FC /* Stripe.bundle in Resources */,
 				ED9133891C31B319009AD4AD /* Assets.xcassets in Resources */,
 				ED9133871C31B319009AD4AD /* Main.storyboard in Resources */,
+				ED4FF37D1D52D154007BF12E /* checkbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -574,24 +574,24 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All fields are required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iM-Bs-fWv">
                                 <rect key="frame" x="29" y="85" width="169" height="21"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="We accept Visa, Mastercard, Amex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7E-3x-lIh">
                                 <rect key="frame" x="29" y="320" width="272" height="32"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="and Discovery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9E6-a7-Oju">
                                 <rect key="frame" x="28" y="339" width="272" height="32"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Save my credit card info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gtx-T4-8iO">
-                                <rect key="frame" x="29" y="380" width="165" height="21"/>
+                                <rect key="frame" x="59" y="381" width="165" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -602,6 +602,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vve-0Y-46m" customClass="DLRadioButton">
+                                <rect key="frame" x="28" y="375" width="25" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="icon" value="checkbox.png"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="iconSelected" value="checkbox.png"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -613,6 +622,7 @@
                         <outlet property="ccExp" destination="SaR-8v-gm2" id="8Gu-Lq-kfp"/>
                         <outlet property="ccName" destination="DTL-K6-9gh" id="i65-wC-U03"/>
                         <outlet property="ccNum" destination="eef-uU-clP" id="Xoz-2T-PO8"/>
+                        <outlet property="saveMyInfo" destination="Vve-0Y-46m" id="dZI-CU-n4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tmG-IU-aYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1078,6 +1088,9 @@
             <point key="canvasLocation" x="1831" y="732"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkbox.png" width="40" height="40"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="60C-Ke-BIc"/>
         <segue reference="Imx-gM-lrW"/>
