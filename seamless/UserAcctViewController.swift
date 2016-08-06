@@ -133,9 +133,13 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
     
     func postStripeToken(token: STPToken) {
         
-        let URL = "http://localhost/donate/payment.php"
+        
+        //let URL = "https://sm-seamless.herokuapp.com/submit_token"
+        let URL = "http://localhost:3030/submit_token"
         let params = ["stripeToken": token.tokenId]
         print(params)
+        
+        //post to rails db
         /*let params = ["stripeToken": token.tokenId,
             "amount": self.amountTextField.text.toInt()!,
             "currency": "usd",
