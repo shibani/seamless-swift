@@ -20,12 +20,19 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var saveMyInfo: DLRadioButton!
     
+    //var newTotal:Double = 0.0
+    
+    var totalString :String = ""
+    
+    var err: NSError?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("item: \(shoppingCartItemsArray[0].name)")
         print("address: \(deliveryAddress)")
+        totalString = String(format: "$ %.2f", cartFinalAmt)
+        print("totalAmt: \(totalString)")
         
         ccNum.placeholder = "Enter Credit Card Number"
         ccNum.textColor = UIColor.lightGrayColor()
@@ -113,51 +120,74 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
                 // show the error to the user
                 print(error)
             } else if let token = token {
-                /*self.submitTokenToBackend(token, completion: { (error: NSError?) in
-                    if let error = error {
-                        // show the error to the user
-                    } else {
-                        // show a receipt page
-                        print("success")
-                    }
-                })*/
                 print("Got token! Token: \(token)")
                 self.postStripeToken(token)
             }
         }
     }
     
-    func submitTokenToBackend(token: STPToken, completion: ( ( NSError? ) -> Void) ){
-        
-    }
-    
     func postStripeToken(token: STPToken) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let emailText = defaults.stringForKey("loginKey")
         
+        let keychain = KeychainSwift()
+        let userId = keychain.get(emailText!)
+        print("id: \(userId!)")
         
-        //let URL = "https://sm-seamless.herokuapp.com/submit_token"
-        let URL = "http://localhost:3030/submit_token"
-        let params = ["stripeToken": token.tokenId]
-        print(params)
+        //let string = "https://sm-seamless.herokuapp.com/submit_token"
+        let string = "http://localhost:3030/submit_token"
         
         //post to rails db
-        /*let params = ["stripeToken": token.tokenId,
-            "amount": self.amountTextField.text.toInt()!,
-            "currency": "usd",
-            "description": self.emailTextField.text]*/
+        let params = [
+            "user" : [
+                "email" : emailText!,
+                "token" : userId!
+            ],
+            "charge" : [
+                "stripeToken" : token.tokenId,
+                "amount" : totalString,
+                "currency" : "usd",
+                "description" : emailText!
+            ]
+        ]
         
-        /*let manager = AFHTTPRequestOperationManager()
-        manager.POST(URL, parameters: params, success: { (operation, responseObject) -> Void in
+        print(params)
+        
+        let url = NSURL(string: string)
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params as [String: Dictionary], options:NSJSONWritingOptions.PrettyPrinted)
             
-            if let response = responseObject as? [String: String] {
-                UIAlertView(title: response["status"],
-                    message: response["message"],
-                    delegate: nil,
-                    cancelButtonTitle: "OK").show()
+        } catch {
+            print("error serializing JSON 1: \(error)")
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if (response as? NSHTTPURLResponse != nil) {
+                //returning from server
+                do{
+                    let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                    
+                    print(responseJSON)
+                    
+                }catch{
+                    print("error serializing JSON2: \(error)")
+                }
+                
+                if(self.err != nil) {
+                    print(self.err!.localizedDescription)
+                    //show these errors
+                }
             }
-            
-            }) { (operation, error) -> Void in
-                self.handleError(error!)
-        }*/
+        }
+        
+        task.resume()
     
     }
     

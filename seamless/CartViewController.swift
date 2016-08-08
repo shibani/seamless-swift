@@ -10,6 +10,7 @@ import UIKit
 
 var shoppingCartItemsArray:[CartItem] = []
 var deliveryAddress :String = "acct_primary"
+var cartFinalAmt :Double = 0.0
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -88,6 +89,16 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func checkOutBtnClicked(sender: AnyObject) {
+        
+        for item in shoppingCartItemsArray{
+            let price = Helper.menuItemPriceDouble(item.price)
+            let qty = Double(item.qty)
+            newTotal += Double(price * qty!)
+        }
+        
+        cartFinalAmt += newTotal
+        
+        print("newTotal: \(newTotal)")
         
         self.performSegueWithIdentifier("loadAddressView", sender: self)
     }

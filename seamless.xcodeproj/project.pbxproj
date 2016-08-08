@@ -16,8 +16,6 @@
 		ED38D8A31C61A28E00DE1B75 /* RestoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9133831C31B319009AD4AD /* RestoViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		ED38D8A51C61A73700DE1B75 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */; };
 		ED4FF37D1D52D154007BF12E /* checkbox.png in Resources */ = {isa = PBXBuildFile; fileRef = ED4FF37C1D52D154007BF12E /* checkbox.png */; settings = {ASSET_TAGS = (); }; };
-		ED62B3631D558A35003679AB /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62B3621D558A35003679AB /* MyAPIClient.swift */; settings = {ASSET_TAGS = (); }; };
-		ED62B3651D558C34003679AB /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62B3641D558C34003679AB /* Networking.swift */; settings = {ASSET_TAGS = (); }; };
 		ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */; settings = {ASSET_TAGS = (); }; };
 		ED62FD421CF3ED04002B3324 /* CartViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED62FD411CF3ED04002B3324 /* CartViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		ED6D00181D5040F300C6B9FC /* Stripe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED6D00171D5040F300C6B9FC /* Stripe.framework */; settings = {ASSET_TAGS = (); }; };
@@ -62,8 +60,6 @@
 		ED2D89901C387D040090C10C /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		ED38D8A41C61A73700DE1B75 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ED4FF37C1D52D154007BF12E /* checkbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkbox.png; path = Assets.xcassets/checkbox.png; sourceTree = "<group>"; };
-		ED62B3621D558A35003679AB /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
-		ED62B3641D558C34003679AB /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopAlignedLabel.swift; sourceTree = "<group>"; };
 		ED62FD411CF3ED04002B3324 /* CartViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewCell.swift; sourceTree = "<group>"; };
 		ED6D00171D5040F300C6B9FC /* Stripe.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Stripe.framework; sourceTree = "<group>"; };
@@ -133,8 +129,6 @@
 				ED62FD3F1CF3ECF5002B3324 /* TopAlignedLabel.swift */,
 				ED8E62641C61626400C8174C /* OneShotLocationManager.swift */,
 				ED1E70351D29FFD70078BEF7 /* KeychainSwiftDistrib.swift */,
-				ED62B3621D558A35003679AB /* MyAPIClient.swift */,
-				ED62B3641D558C34003679AB /* Networking.swift */,
 				ED9133811C31B319009AD4AD /* AppDelegate.swift */,
 				ED9133851C31B319009AD4AD /* Main.storyboard */,
 				EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */,
@@ -242,10 +236,8 @@
 				ED62FD401CF3ECF5002B3324 /* TopAlignedLabel.swift in Sources */,
 				ED38D8A31C61A28E00DE1B75 /* RestoViewController.swift in Sources */,
 				ED2C41D21CC5D0FB007551DB /* CartItem.swift in Sources */,
-				ED62B3651D558C34003679AB /* Networking.swift in Sources */,
 				EDC4939E1D4545690012E199 /* DeliveryAddressViewController.swift in Sources */,
 				EDC493A21D454DAE0012E199 /* UserAcctViewController.swift in Sources */,
-				ED62B3631D558A35003679AB /* MyAPIClient.swift in Sources */,
 				ED87BCE01CBAAF5C00EE3065 /* MenuTableViewCell.swift in Sources */,
 				ED0220841CFA7A990091CAC1 /* SignInViewController.swift in Sources */,
 				ED1E70361D29FFD70078BEF7 /* KeychainSwiftDistrib.swift in Sources */,
