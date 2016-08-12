@@ -145,13 +145,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             
             let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
                 if (response as? NSHTTPURLResponse != nil) {
-                
-                    //let code = answer.statusCode
-                    
-                    //let responseString: String = String(data: data!, encoding: NSUTF8StringEncoding)!
                     
                     do{
                         let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                        
+                        print(responseJSON)
+                        print(responseJSON["user_simple_id"])
+                        
+                        let userSimpleId : String! = String(responseJSON["user_simple_id"]!!)
+                        print("Simple ID: \(userSimpleId!)")
+                        
+                        let urlString = "\(userSimpleId!)/\(usernameText)"
+                        let firstDefaults = NSUserDefaults.standardUserDefaults()
+                        
+                        firstDefaults.setObject(urlString, forKey: "usernameUrl")
+                        print("url: \(urlString)")
+                        
+                        
                         if let userId = responseJSON["user_id"] as? (String){
                             print("User: \(userId)")
                         
@@ -161,19 +171,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                             //set NSUserDefaults to say loginKey = true
                             let defaults = NSUserDefaults.standardUserDefaults()
                             defaults.setObject(emailText, forKey: "loginKey")
-                            //defaults.setObject(usernameText, forKey: "username")
                         
                             NSOperationQueue.mainQueue().addOperationWithBlock {
                                 
                                 self.performSegueWithIdentifier("loadUserInfoView", sender: self)
                             }
-                        /*} else if let errors = responseJSON["errors"] as? (String){*/
                         } else {
                             print(responseJSON)
-                            //parse this JSON properly
-                            //print("Error: \(errors)")
-                            //response from server
-                            /*{
+                            /*parse this JSON properly
+                            if let errors = responseJSON["errors"] as? (String){}
+                            response from server
+                            {
                                 errors =     {
                                     email =         (
                                         "has already been taken"

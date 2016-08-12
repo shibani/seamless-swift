@@ -32,6 +32,7 @@
 		ED91338C1C31B319009AD4AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED91338A1C31B319009AD4AD /* LaunchScreen.storyboard */; };
 		EDA5F9FB1CD6696C0064F019 /* cart.png in Resources */ = {isa = PBXBuildFile; fileRef = EDA5F9FA1CD6696C0064F019 /* cart.png */; settings = {ASSET_TAGS = (); }; };
 		EDA8B5751D37210A0059F6E8 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EDB727BA1D5D696C00C724F3 /* OrderPlacedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDB727B91D5D696C00C724F3 /* OrderPlacedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDBE68051C6A577C00F204ED /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDC4939E1D4545690012E199 /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EDC493A21D454DAE0012E199 /* UserAcctViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -81,6 +82,7 @@
 		ED91338D1C31B319009AD4AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDA5F9FA1CD6696C0064F019 /* cart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cart.png; path = Assets.xcassets/cart.png; sourceTree = "<group>"; };
 		EDA8B5741D37210A0059F6E8 /* UserInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		EDB727B91D5D696C00C724F3 /* OrderPlacedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderPlacedViewController.swift; sourceTree = "<group>"; };
 		EDBE68031C6A577C00F204ED /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
 		EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAcctViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				EDC4939D1D4545690012E199 /* DeliveryAddressViewController.swift */,
 				ED90536D1CF3F8C800C5513F /* NewAddressViewController.swift */,
 				EDC493A11D454DAE0012E199 /* UserAcctViewController.swift */,
+				EDB727B91D5D696C00C724F3 /* OrderPlacedViewController.swift */,
 				ED9133881C31B319009AD4AD /* Assets.xcassets */,
 				ED4FF37C1D52D154007BF12E /* checkbox.png */,
 				EDA5F9FA1CD6696C0064F019 /* cart.png */,
@@ -249,6 +252,7 @@
 				ED9133821C31B319009AD4AD /* AppDelegate.swift in Sources */,
 				ED8E62671C61627500C8174C /* SwiftyJSON.swift in Sources */,
 				ED7EA90C1CD824EA00DC1E57 /* Helper.swift in Sources */,
+				EDB727BA1D5D696C00C724F3 /* OrderPlacedViewController.swift in Sources */,
 				ED8E62651C61626400C8174C /* OneShotLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

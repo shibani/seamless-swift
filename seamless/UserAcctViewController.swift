@@ -27,7 +27,10 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
     var err: NSError?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        self.getCardsList()
         
         print("item: \(shoppingCartItemsArray[0].name)")
         print("address: \(deliveryAddress)")
@@ -176,6 +179,34 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
                     
                     print(responseJSON)
                     
+                    if responseJSON["message"]! as? (String) == "success" {
+                        
+                        NSOperationQueue.mainQueue().addOperationWithBlock {
+                            let alert = UIAlertController(title: "Thank you for your order!", message: "Your order is being processed", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                print("Handle Ok logic here")
+                                
+                                defer {
+                                    dispatch_async( dispatch_get_main_queue(),{
+                                self.performSegueWithIdentifier("loadOrderPlacedView", sender: self)
+                                    })
+                                }
+                            })
+                            )
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        }
+                    } else {
+                        
+                        NSOperationQueue.mainQueue().addOperationWithBlock {
+                            let alert = UIAlertController(title: "Oops!", message: "Something went wrong, please try again", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction!) in
+                                print("Handle Ok logic here")
+                            })
+                            )
+                            self.presentViewController(alert, animated: true, completion: nil)
+                        }
+                    }
+                    
                 }catch{
                     print("error serializing JSON2: \(error)")
                 }
@@ -197,4 +228,70 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
         
         self.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    func getCardsList(){
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let urlString = defaults.stringForKey("usernameUrl")!
+        print("\(urlString)")
+        
+        let emailText = defaults.stringForKey("loginKey")
+        let keychain = KeychainSwift()
+        let userId = keychain.get(emailText!)
+        print("id: \(userId!)")
+        
+        //let string = "https://sm-seamless.herokuapp.com/submit_token"
+        let string = "http://localhost:3030/submit_token"
+        
+        //post to rails db
+        let params = [
+            "user" : [
+                "email" : emailText!,
+                "token" : userId!
+            ],
+            "card" : [
+                "last4" : "true"
+            ]
+        ]
+        
+        print(params)
+        
+        let url = NSURL(string: string)
+        let session = NSURLSession.sharedSession()
+        let request = NSMutableURLRequest(URL: url!)
+        
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params as [String: Dictionary], options:NSJSONWritingOptions.PrettyPrinted)
+            
+        } catch {
+            print("error serializing JSON 1: \(error)")
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if (response as? NSHTTPURLResponse != nil) {
+                //returning from server
+                do{
+                    let responseJSON = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
+                    
+                    print(responseJSON)
+                    
+                }catch{
+                    print("error serializing JSON2: \(error)")
+                }
+                
+                if(self.err != nil) {
+                    print(self.err!.localizedDescription)
+                    //show these errors
+                }
+            }
+        }
+        
+        task.resume()
+
+    }
+    
 }
