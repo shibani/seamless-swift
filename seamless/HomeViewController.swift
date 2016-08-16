@@ -41,6 +41,21 @@ class HomeViewController: UIViewController {
             } else {
                 //self.performSegueWithIdentifier("loadRestoView", sender: self)
                 self.performSegueWithIdentifier("loadUserInfoView", sender: self)
+                
+                let userDefaults = NSUserDefaults.standardUserDefaults()
+                
+                /*if let emailText = userDefaults.stringForKey("loginKey") {
+                    
+                    let keychain = KeychainSwift()
+                    keychain.delete(emailText)
+                    
+                    userDefaults.removeObjectForKey("loginKey")
+                    userDefaults.removeObjectForKey("userInfo")
+                    userDefaults.removeObjectForKey("username")
+                    userDefaults.removeObjectForKey("userId")
+                    userDefaults.removeObjectForKey("usernameUrl")
+                    userDefaults.synchronize()
+                }*/
             }
             
         } else {

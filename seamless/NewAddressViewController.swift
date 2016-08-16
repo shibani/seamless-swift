@@ -178,8 +178,8 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate {
             print("jsonToken: \(jsonToken)")
         
             
-            //let string = "https://sm-seamless.herokuapp.com/add_address"
-            let string = "http://localhost:3030/add_address"
+            let string = "https://sm-seamless.herokuapp.com/add_address"
+            //let string = "http://localhost:3030/add_address"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
             let request = NSMutableURLRequest(URL: url!)
@@ -231,7 +231,7 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate {
                                     defer {
                                         dispatch_async( dispatch_get_main_queue(),{
                                         
-                                            deliveryAddress = jsonPlaceType
+                                            orderDetails["deliveryAddress"] = jsonPlaceType
                                         self.performSegueWithIdentifier("loadUserAcctDetailsView", sender: self)
                                         })
                                     }

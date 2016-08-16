@@ -124,8 +124,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         } else {
             //post to url here
             
-            //let string = "https://sm-seamless.herokuapp.com/users"
-            let string = "http://localhost:3030/users"
+            let string = "https://sm-seamless.herokuapp.com/users"
+            //let string = "http://localhost:3030/users"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
             let request = NSMutableURLRequest(URL: url!)
@@ -152,14 +152,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         print(responseJSON)
                         print(responseJSON["user_simple_id"])
                         
-                        let userSimpleId : String! = String(responseJSON["user_simple_id"]!!)
-                        print("Simple ID: \(userSimpleId!)")
-                        
-                        let urlString = "\(userSimpleId!)/\(usernameText)"
-                        let firstDefaults = NSUserDefaults.standardUserDefaults()
-                        
-                        firstDefaults.setObject(urlString, forKey: "usernameUrl")
-                        print("url: \(urlString)")
+                        if (responseJSON["user_simple_id"] != nil){
+                            let userSimpleId : String! = String(responseJSON["user_simple_id"]!!)
+                            print("Simple ID: \(userSimpleId!)")
+                            
+                            let urlString = "\(userSimpleId!)/\(usernameText)"
+                            let firstDefaults = NSUserDefaults.standardUserDefaults()
+                            
+                            firstDefaults.setObject(urlString, forKey: "usernameUrl")
+                            print("url: \(urlString)")
+                        }
                         
                         
                         if let userId = responseJSON["user_id"] as? (String){

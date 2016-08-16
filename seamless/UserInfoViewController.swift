@@ -181,8 +181,8 @@ class UserInfoViewController: UIViewController, UITextFieldDelegate {
         } else {
             //do sign in with email and token here
             
-            //let string = "https://sm-seamless.herokuapp.com/user_info"
-            let string = "http://localhost:3030/user_info"
+            let string = "https://sm-seamless.herokuapp.com/user_info"
+            //let string = "http://localhost:3030/user_info"
             let url = NSURL(string: string)
             let session = NSURLSession.sharedSession()
             let request = NSMutableURLRequest(URL: url!)

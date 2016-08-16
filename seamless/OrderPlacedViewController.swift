@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import Foundation
-import MessageUI
 
-class OrderPlacedViewController: UIViewController, MFMailComposeViewControllerDelegate {
+class OrderPlacedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //trigger email send here
+        //just show success message here, email send moved to Rails
     }
     
     override func didReceiveMemoryWarning() {

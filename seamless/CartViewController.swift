@@ -11,6 +11,8 @@ import UIKit
 var shoppingCartItemsArray:[CartItem] = []
 var deliveryAddress :String = "acct_primary"
 var cartFinalAmt :Double = 0.0
+var orderDetails = [String: String]()
+
 
 class CartViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -97,6 +99,15 @@ class CartViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         cartFinalAmt += newTotal
+        
+        //each shopping cart item has the resto name in line item to check if
+        //the user was adding from the same restaurant
+        //orderDetails["restoName"] = shoppingCartItemsArray[0].restaurant
+        
+        orderDetails["cartFinalAmt"] = String(format: "%.2f", newTotal)
+        orderDetails["deliveryAddress"] = "acct_primary"
+        orderDetails["orderTax"] = String(format: "%.2f", 3.25)
+        orderDetails["orderTip"] = String(format: "%.2f", 2.25)
         
         print("newTotal: \(newTotal)")
         

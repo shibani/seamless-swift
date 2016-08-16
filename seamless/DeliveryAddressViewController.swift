@@ -47,8 +47,8 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
         print("jsonEmail: \(jsonEmail)")
         print("jsonToken: \(jsonToken)")
         
-        //let urlString = "https://sm-seamless.herokuapp.com/show_json"
-        let urlString = "http://localhost:3030/show_json"
+        let urlString = "https://sm-seamless.herokuapp.com/show_json"
+        //let urlString = "http://localhost:3030/show_json"
         let url = NSURL(string: urlString)
         let session = NSURLSession.sharedSession()
         let request = NSMutableURLRequest(URL: url!)
@@ -121,7 +121,7 @@ class DeliveryAddressViewController: UIViewController, NSURLConnectionDataDelega
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated);
         
-        if deliveryAddress != "acct_primary" {
+        if orderDetails["deliveryAddress"] != "acct_primary" {
             newAddressBtn.hidden = true
         }
     }

@@ -73,7 +73,7 @@ class MenuDetailViewController: UIViewController {
         stepper.maximumValue = 10
         stepper.minimumValue = 1
         
-        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

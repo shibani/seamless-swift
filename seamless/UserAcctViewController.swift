@@ -32,10 +32,24 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
         
         self.getCardsList()
         
-        print("item: \(shoppingCartItemsArray[0].name)")
+        let deliveryAddress = orderDetails["deliveryAddress"]
+        let cartFinalAmt = orderDetails["cartFinalAmt"]
+        
+        print("resto name: \(shoppingCartItemsArray[0].restaurant)")
         print("address: \(deliveryAddress)")
-        totalString = String(format: "$ %.2f", cartFinalAmt)
-        print("totalAmt: \(totalString)")
+        print("totalAmt: \(cartFinalAmt)")
+        
+        var orderItems : [String : Array<String>] = Dictionary()
+        
+        for var i = 0; i < shoppingCartItemsArray.count ; ++i {
+            let name = shoppingCartItemsArray[i].name
+            let qty = shoppingCartItemsArray[i].qty
+            let price = shoppingCartItemsArray[i].price
+            
+            orderItems[name] = [qty, price]
+        }
+        
+        print ("orderItems1: \(orderItems)")
         
         ccNum.placeholder = "Enter Credit Card Number"
         ccNum.textColor = UIColor.lightGrayColor()
@@ -137,8 +151,25 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
         let userId = keychain.get(emailText!)
         print("id: \(userId!)")
         
-        //let string = "https://sm-seamless.herokuapp.com/submit_token"
-        let string = "http://localhost:3030/submit_token"
+        let string = "https://sm-seamless.herokuapp.com/submit_token"
+        //let string = "http://localhost:3030/submit_token"
+        
+        let deliveryLoc = orderDetails["deliveryAddress"]!
+        //parse shopping cart here
+        //for items in shopping cart print item.name, item.qty and item.price.
+        
+        //var orderItems = [String: Dictionary]()
+        var orderItems : [String : Array<String>] = Dictionary()
+        
+        for var i = 0; i < shoppingCartItemsArray.count ; ++i {
+            let name = shoppingCartItemsArray[i].name
+            let qty = shoppingCartItemsArray[i].qty
+            let price = shoppingCartItemsArray[i].price
+            
+            orderItems[name] = [qty, price]
+        }
+        
+        print ("orderItems2: \(orderItems)")
         
         //post to rails db
         let params = [
@@ -148,10 +179,17 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
             ],
             "charge" : [
                 "stripeToken" : token.tokenId,
-                "amount" : totalString,
+                "amount" : cartFinalAmt,
                 "currency" : "usd",
                 "description" : emailText!
-            ]
+            ],
+            "orderDetails" : [
+                "restoName" : shoppingCartItemsArray[0].restaurant,
+                "deliveryLoc" : deliveryLoc,
+                "taxAmt": orderDetails["orderTax"]!,
+                "tipAmt": orderDetails["orderTip"]!
+            ],
+            "shoppingCart" : orderItems
         ]
         
         print(params)
@@ -165,7 +203,7 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params as [String: Dictionary], options:NSJSONWritingOptions.PrettyPrinted)
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params as! [String: AnyObject], options:NSJSONWritingOptions.PrettyPrinted)
             
         } catch {
             print("error serializing JSON 1: \(error)")
@@ -240,8 +278,8 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
         let userId = keychain.get(emailText!)
         print("id: \(userId!)")
         
-        //let string = "https://sm-seamless.herokuapp.com/submit_token"
-        let string = "http://localhost:3030/submit_token"
+        let string = "https://sm-seamless.herokuapp.com/submit_token"
+        //let string = "http://localhost:3030/submit_token"
         
         //post to rails db
         let params = [
@@ -249,6 +287,7 @@ class UserAcctViewController: UIViewController, UITextFieldDelegate {
                 "email" : emailText!,
                 "token" : userId!
             ],
+            
             "card" : [
                 "last4" : "true"
             ]

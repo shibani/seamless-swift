@@ -274,6 +274,7 @@ class RestoViewController: UIViewController, UITableViewDataSource, CLLocationMa
             userDefaults.removeObjectForKey("userInfo")
             userDefaults.removeObjectForKey("username")
             userDefaults.removeObjectForKey("userId")
+            userDefaults.removeObjectForKey("usernameUrl")
             userDefaults.synchronize()
         }
         
