@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //Stripe.setDefaultPublishableKey("pk_test_PkGxcyzfW8K2danqRJ75JSCG")
-        STPPaymentConfiguration.sharedConfiguration().publishableKey = "pk_test_PkGxcyzfW8K2danqRJ75JSCG"
+        STPPaymentConfiguration.sharedConfiguration().publishableKey = "pk_test_xxxxxxxxxxxxxxxxxG"
         // Override point for customization after application launch.
         return true
     }
